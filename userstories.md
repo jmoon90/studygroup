@@ -2,7 +2,7 @@
 #####they are directed to landing page
 #####so that they can sign up or log in 
 
-Acceptance Criteria
+ #####Acceptance Criteria
 
 *If the guest already has an account, they can log in 
 
@@ -20,7 +20,7 @@ Acceptance Criteria
 #####Guest can sign up 
 #####so that a guest can join a group
 
-Acceptance Criteria 
+ #####Acceptance Criteria 
 
  *Guest must specify full_name, tutorial, email, password, password_confirmation
 
@@ -38,7 +38,7 @@ Acceptance Criteria
 #####user can choose to create their own or ask us to put them in a group
 #####so that they can be part of a study group
 
-Acceptance Criteria 
+ #####Acceptance Criteria 
 
 *user can decide to create their own group with existing users
 
@@ -58,7 +58,7 @@ Acceptance Criteria
 #####users can discuss course work
 #####so that they can have a better understanding of the text
 
-Acceptance criteria
+ #####Acceptance criteria
 
 *Users can decide to leave the group 
 
@@ -72,7 +72,7 @@ Acceptance criteria
 #####users are given assignments for the week
 #####so that groups have a basic guideline to follow
 
-Acceptance Criteria
+#####Acceptance Criteria
 
 *users are asked to rate the difficulty level, challenges, and pace of the assignment of the week
 
@@ -86,7 +86,7 @@ Acceptance Criteria
 #####previous study group disbands
 #####so they can join other groups
 
-Acceptance Criteria
+#####Acceptance Criteria
 
 *users can only belong to one study group
 
