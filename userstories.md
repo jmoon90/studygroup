@@ -5,10 +5,15 @@
 Acceptance Criteria
 
 *If the guest already has an account, they can log in 
+
 *If they dont have an account they sign up through the landing page
+
 *They can not view anything else because the landing page
+
 *Information about the StudyGroup
+
 *Part of the curriculum is shown on the landing page
+
 *Background picture of a group studying
 
 ######As a guest
@@ -17,12 +22,12 @@ Acceptance Criteria
 
 Acceptance Criteria 
 
-*Guest must specify full_name, tutorial, email, password, password_confirmation
-*password needs to match password_confirmation
-*guest needs to be able to sign in once guest creates an account
-*guests are sent a confirmation email once they sign up 
-*Guest are directed to their homepage once they confirm
-*Guests are directed to their study group if are part of an existing group
+ *Guest must specify full_name, tutorial, email, password, password_confirmation
+ *password needs to match password_confirmation
+ *guest needs to be able to sign in once guest creates an account
+ *guests are sent a confirmation email once they sign up 
+ *Guest are directed to their homepage once they confirm
+ *Guests are directed to their study group if are part of an existing group
 
 ######guest creates account
 ######user can choose to create their own or ask us to put them in a group
