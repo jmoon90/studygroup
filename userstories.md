@@ -1,6 +1,6 @@
->As a guest
->they are directed to landing page
->so that they can sign up or log in 
+######As a guest
+######they are directed to landing page
+######so that they can sign up or log in 
 
 Acceptance Criteria
 *If the guest already has an account, they can log in 
@@ -10,9 +10,9 @@ Acceptance Criteria
 *Part of the curriculum is shown on the landing page
 *Background picture of a group studying
 
->As a guest
->Guest can sign up 
->so that a guest can join a group
+######As a guest
+######Guest can sign up 
+######so that a guest can join a group
 
 Acceptance Criteria 
 *Guest must specify full_name, tutorial, email, password, password_confirmation
@@ -22,9 +22,9 @@ Acceptance Criteria
 *Guest are directed to their homepage once they confirm
 *Guests are directed to their study group if are part of an existing group
 
->guest creates account
->user can choose to create their own or ask us to put them in a group
->so that they can be part of a study group
+######guest creates account
+######user can choose to create their own or ask us to put them in a group
+######so that they can be part of a study group
 
 Acceptance Criteria
 *user can decide to create their own group with existing users
@@ -35,9 +35,9 @@ Acceptance Criteria
 *users can request to be put into a specific group
 *Users can look at other groups discussions unless private
 
->user inside a group
->users can discuss course work
->so that they can have a better understanding of the text
+######user inside a group
+######users can discuss course work
+######so that they can have a better understanding of the text
 
 Acceptance criteria
 *Users can decide to leave the group 
@@ -45,9 +45,9 @@ Acceptance criteria
 *users can mark their progress in the study group
 *Users can decide what time and date they can meetup online
 
->assignments for groups
->users are given assignments for the week
->so that groups have a basic guideline to follow
+######assignments for groups
+######users are given assignments for the week
+######so that groups have a basic guideline to follow
 
 Acceptance Criteria
 *users are asked to rate the difficulty level, challenges, and pace of the assignment of the week
@@ -55,9 +55,9 @@ Acceptance Criteria
 *There will be a new assignment provided to the group each week
 *Group members can gague their progress and where they should be by the end of the week
 
->new user groups
->previous study group disbands
->so they can join other groups
+######new user groups
+######previous study group disbands
+######so they can join other groups
 
 Acceptance Criteria
 *users can only belong to one study group
