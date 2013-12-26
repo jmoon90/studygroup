@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  <% if user_signed_in? %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, confirm: "Are you sure?", class: 'sign_out_user', value: 'Sign out' %>
+  <% end %>
+
   <% flash.each do |name,msg| %>
     <%= msg %>
   <% end %>
