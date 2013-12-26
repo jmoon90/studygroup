@@ -28,13 +28,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
+  gem 'dotenv'
   gem 'pry-rails'
   gem 'capybara'
   gem 'rspec-rails'
   gem 'valid_attribute'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'dotenv'
 end
 
 group :development do
@@ -42,6 +42,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+gem 'devise'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

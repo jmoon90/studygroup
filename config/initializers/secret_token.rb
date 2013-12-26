@@ -9,8 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Studygroup::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
-    ('x' * 30)
-else
-    ENV['SECRET_TOKEN']
-end
+Studygroup::Application.config.secret_key_base = 'd41cab9cfeea153e6db5f16700041135ca4727419ed3a7abeb98991c01082ab639ccd9d15db9d982baf94d7db74fbcca30c7ce7d2be07bcc19f3b4e69e9b8647'
