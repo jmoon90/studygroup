@@ -1,10 +1,17 @@
 class GroupsController < ApplicationController
+  attr_reader :group
   def index
     @groups = Group.all
   end
 
   def show
     @group = Group.find(params[:id])
+    binding.pry
+
+    current_user = current_user.id
+
+    args = { group: group.id, user: current_user }
+    Membership.seeder(args)
   end
 
   def new

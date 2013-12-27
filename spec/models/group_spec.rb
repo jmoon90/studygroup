@@ -12,7 +12,7 @@ describe Group do
 
   describe "#seed_data" do
     it "joins user and group table" do
-      Memberships::SEEDER
+      Membership::SEEDER
     end
   end
 

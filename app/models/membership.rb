@@ -4,12 +4,11 @@ class Membership < ActiveRecord::Base
   belongs_to :group,
     inverse_of: :memberships
 
-  def self.seeder(group)
-    group.each do |group|
-      Membership.find_or_initialize_by(group_id: group[:group_id]) do |mem|
-        mem.user_id = group[:user_id]
-        mem.save
-      end
+  def self.seeder(args)
+    Membership.find_or_initialize_by(group_id: args[:group]) do |mem|
+      mem.user_id = args[:user]
+      mem.save
+      binding.pry
     end
   end
 end

@@ -8,16 +8,13 @@ describe Membership do
   it { should have_valid(:group_id).when(Group.new) }
 
   describe "#seeder" do
+    membership = FactoryGirl.create(:membership)
     it "joins user and group table" do
-      group = [{group_id: 1}]
-      Membership.seeder(group)
-      expect(Membership.all).should_not be_empty
-    end
-    it "joins user and group table" do
-      user = [{user_id: 1}]
-      Membership.seeder(user)
-      expect(Membership.all).should_not be_empty
-    end
+      group = membership.group_id
+      user = membership.user_id
 
+      Membership.seeder(group,user)
+      expect(Membership.all).should_not be_empty
+    end
   end
 end

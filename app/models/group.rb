@@ -6,8 +6,7 @@ class Group < ActiveRecord::Base
 
   has_many :memberships
   has_many :users,
-    through: :memberships,
-    inverse_of: :groups
+    through: :memberships
 
   def self.tutorial_index_and_name
     @tutorials_list = []
@@ -17,6 +16,5 @@ class Group < ActiveRecord::Base
     @tutorials_list
   end
 
-  tutorial_index_and_name
   TUTORIAL_OPTIONS = @tutorials_list
 end
