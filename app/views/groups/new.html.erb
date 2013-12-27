@@ -1,0 +1,24 @@
+<h1> Create New Group </h1>
+
+<% if @group.errors.any? %>
+  <ul>
+    <% @group.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@group) do |f| %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :tutorial_id %>
+    <%= f.select(Group::TUTORIAL_OPTIONS, { :include_blank => 'Please select' }) %>
+  <div>
+    <%= f.submit "Create group" %>
+  </div>
+<% end %>

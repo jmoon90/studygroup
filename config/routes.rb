@@ -4,4 +4,6 @@ Studygroup::Application.routes.draw do
   end
 
   devise_for :users
+
+  resources :groups, only: [:index, :show, :new, :create]
 end
