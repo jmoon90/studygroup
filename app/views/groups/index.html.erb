@@ -1,7 +1,9 @@
 <h1> Groups </h1>
 
+<div><%= link_to "Create New Group", new_group_path %></div>
+  <br>
 <ul>
 <%  @groups.each do |group| %>
-  <li><%= group.name %></li>
+  <li><%= link_to group.name, group_path(group) %></li>
 <% end %>
 </ul>
