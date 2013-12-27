@@ -12,8 +12,11 @@
     <%= link_to "Sign out", destroy_user_session_path, method: :delete, confirm: "Are you sure?", class: 'sign_out_user', value: 'Sign out' %>
   <% end %>
 
-  <% flash.each do |name,msg| %>
-    <%= msg %>
+  <% flash.each do |name, msg| %>
+    <div data-alert class="alert-box">
+      <%= msg %>
+      <a href= "#" class="close">&times;</a>
+    </div>
   <% end %>
 
 <%= yield %>

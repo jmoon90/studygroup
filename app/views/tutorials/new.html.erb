@@ -1,0 +1,21 @@
+<h1>Add tutorial</h1>
+
+<% if @tutorial.errors.any? %>
+  <ul>
+    <% @tutorial.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@tutorial) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.submit 'Add Tutorial' %>
+  </div>
+
+<% end %>
