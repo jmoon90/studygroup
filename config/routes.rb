@@ -1,7 +1,5 @@
 Studygroup::Application.routes.draw do
-  devise_scope :user do
-    root to: 'devise/registrations#edit'
-  end
+  root to: 'groups#index'
 
   devise_for :users
 

@@ -27,6 +27,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'devise'
+
+gem 'foundation-rails'
+gem 'compass'
+
 group :development, :test do
   gem 'dotenv'
   gem 'pry-rails'
@@ -35,6 +40,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'launchy'
 end
 
 group :development do
@@ -42,8 +48,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
-
-gem 'devise'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
