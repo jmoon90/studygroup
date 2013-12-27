@@ -8,5 +8,15 @@ class Group < ActiveRecord::Base
   has_many :users,
     through: :memberships,
     inverse_of: :groups
-  TUTORIAL_OPTIONS = [[1, 'Rails Tutorial']]
+
+  def self.tutorial_index_and_name
+    @tutorials_list = []
+    Tutorial.all.each do |tutorial|
+      @tutorials_list << [tutorial.name, tutorial.id]
+    end
+    @tutorials_list
+  end
+
+  tutorial_index_and_name
+  TUTORIAL_OPTIONS = @tutorials_list
 end
