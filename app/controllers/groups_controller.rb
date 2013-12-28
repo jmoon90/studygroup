@@ -20,9 +20,8 @@ class GroupsController < ApplicationController
   def leave
     @user = current_user
     @group = Group.find(params[:group_id])
-    args = { user: nil, group: nil }
-    Membership.seeder(args)
-    Group.add_user_to_group(args)
+    individual_mem = Membership.where(group_id: @group, user_id: @user.id)
+    Membership.delete(individual_mem)
     redirect_to group_path(@group)
   end
 
