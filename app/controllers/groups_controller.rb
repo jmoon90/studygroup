@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     args = { user: @user.id, group: @group.id }
     Membership.seeder(args)
     Group.add_user_to_group(args)
-    redirect_to group_path(@group)
+    redirect_to group_path(@group), notice: "Welcome to the group"
   end
 
   def leave
@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:group_id])
     individual_mem = Membership.where(group_id: @group, user_id: @user.id)
     Membership.delete(individual_mem)
-    redirect_to group_path(@group)
+    redirect_to group_path(@group), notice: "Sorry to see you leave"
   end
 
   def mygroup
