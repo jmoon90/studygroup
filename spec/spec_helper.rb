@@ -44,4 +44,5 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include RequestHelper
+  config.include SignInHelper
 end

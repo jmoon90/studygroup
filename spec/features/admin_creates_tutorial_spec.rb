@@ -1,22 +1,24 @@
 require 'spec_helper'
 
 feature "Tutorial list" do
-  scenario 'valid inputs' do
+  before(:each) do
     visit new_tutorial_path
+  end
 
-    fill_in "Name", with: 'Rails tutorial'
-    click_button('Add Tutorial')
+  scenario 'valid inputs' do
+    fill_in "Name", with: 'BoogyRails'
+    click_button 'Add Tutorial'
+
     expect(page).to have_content("Added new tutorial")
   end
-  scenario 'invalid inputs' do
-    visit new_tutorial_path
 
+  scenario 'invalid inputs' do
     click_button('Add Tutorial')
+
     expect(page).to have_content("Name can't be blank")
   end
-  scenario 'tutorials form' do
-    visit new_tutorial_path
 
+  scenario 'tutorials form' do
     expect(page).to have_content("Add tutorial")
   end
 end
