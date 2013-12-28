@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20131227163720) do
   end
 
   create_table "memberships", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
+    t.integer  "user_id"
   end
 
   create_table "tutorials", force: true do |t|

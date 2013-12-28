@@ -8,7 +8,6 @@ class Membership < ActiveRecord::Base
     Membership.find_or_initialize_by(group_id: args[:group]) do |mem|
       mem.user_id = args[:user]
       mem.save
-      binding.pry
     end
   end
 end

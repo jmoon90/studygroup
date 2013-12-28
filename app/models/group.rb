@@ -13,8 +13,8 @@ class Group < ActiveRecord::Base
     Tutorial.all.each do |tutorial|
       @tutorials_list << [tutorial.name, tutorial.id]
     end
-    @tutorials_list
   end
 
+  tutorial_index_and_name
   TUTORIAL_OPTIONS = @tutorials_list
 end

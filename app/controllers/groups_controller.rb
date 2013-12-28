@@ -6,12 +6,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    binding.pry
-
-    current_user = current_user.id
-
-    args = { group: group.id, user: current_user }
-    Membership.seeder(args)
   end
 
   def new
@@ -19,9 +13,12 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @group = Group.new(group_params)
 
     if @group.save
+      args = { user: @user.id, group: @group.id }
+      Membership.seeder(args)
       redirect_to groups_path, notice: 'Success'
     else
       render :new

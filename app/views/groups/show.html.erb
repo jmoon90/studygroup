@@ -1,2 +1,6 @@
 <h1><%= @group.name %></h1>
 <%= @group.tutorial.name %>
+
+<% @group.users.each do |user| %>
+  <h3><%= user.email %></h3>
+<% end %>
