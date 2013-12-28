@@ -25,6 +25,11 @@ class GroupsController < ApplicationController
     redirect_to group_path(@group)
   end
 
+  def mygroup
+    @user = current_user
+    @memberships = Membership.where(user_id: @user.id)
+  end
+
   def new
     @group = Group.new
   end

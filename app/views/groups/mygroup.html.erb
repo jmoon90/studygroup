@@ -1,0 +1,9 @@
+<h1>My Group </h1>
+
+
+<ul>
+  <% @memberships.each do |membership| %>
+    <li><%= membership.group.name %></li>
+  <% end %>
+</ul>
+

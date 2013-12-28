@@ -6,6 +6,10 @@ Studygroup::Application.routes.draw do
   resources :groups, only: [:index, :show, :new, :create] do
     get 'join'
     get 'leave'
+    collection do
+      get 'mygroup'
+    end
   end
+
   resources :tutorials, only: [:new, :create]
 end
