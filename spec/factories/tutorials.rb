@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :tutorial do
-    name "Rails Tutorial"
-
-    association :group
+    name "Rail Tutorial"
   end
 end
