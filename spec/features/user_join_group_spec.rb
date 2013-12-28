@@ -1,23 +1,22 @@
 require 'spec_helper'
 
 feature 'Join group' do
-
   scenario 'join and leave present' do
     FactoryGirl.create(:group)
     visit root_path
     first(:link, 'Hartl').click
-    expect(page).to have_content('Hartl')
+    expect(page).to have_content('join')
   end
 
- # scenario 'join group' do
- #   #NEED TO REFACTOR
- #   @user = User.last
- #   @tutorial = Tutorial.last
- #   @group = FactoryGirl.create(:group)
- #   visit root_path
+  scenario 'join group' do
+    FactoryGirl.create(:group)
+    FactoryGirl.create(:membership)
+    user = FactoryGirl.create(:user)
 
- #   click_on 'Hartl'
- #   click_on 'join'
- #   expect(page).to have_content(@user)
- # end
+    visit root_path
+    first(:link, 'Hartl').click
+    log_in_user(user)
+    first(:link, 'join').click
+    expect(page).to have_content(user.email)
+  end
 end

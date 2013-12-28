@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :membership do
-    group_id 1
-    user_id 1
+    sequence :group_id do |n|
+      180 + "#{n}".to_i
+    end
+    user_id 93
   end
 end
