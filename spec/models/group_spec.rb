@@ -10,11 +10,5 @@ describe Group do
   it { should validate_presence_of :name }
   it { should validate_presence_of :tutorial_id }
 
-  describe "#seed_data" do
-    it "joins user and group table" do
-      Membership::SEEDER
-    end
-  end
-
 end
 

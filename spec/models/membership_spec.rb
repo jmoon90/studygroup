@@ -12,8 +12,9 @@ describe Membership do
     it "joins user and group table" do
       group = membership.group_id
       user = membership.user_id
+      args = { group: group, user: user }
 
-      Membership.seeder(group,user)
+      Membership.seeder(args)
       expect(Membership.all).should_not be_empty
     end
   end

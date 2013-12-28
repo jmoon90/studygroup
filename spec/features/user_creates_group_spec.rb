@@ -8,15 +8,12 @@ feature Group do
 
   scenario 'user can select a tutorial' do
     visit new_group_path
-    expect(page).to have_content('Ruby monk')
+    expect(page).to have_content('Please select')
   end
 
-  scenario 'flash success message' do
+  scenario 'invalid input' do
     visit new_group_path
-    fill_in 'Name', with: "Golum"
-    fill_in 'Tutorial', with: "rails tutorial"
-
     click_button 'Create group'
-    expect(page).to have_content('Success')
+    expect(page).to have_content("can't be blank")
   end
 end
