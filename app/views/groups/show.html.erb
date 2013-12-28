@@ -1,6 +1,9 @@
 <h1><%= @group.name %></h1>
 <%= @group.tutorial.name %>
 
+<%= link_to 'join', group_join_path(@group) %>
+<%= link_to 'leave', group_leave_path(@group) %>
+
 <% @group.users.each do |user| %>
   <h3><%= user.email %></h3>
 <% end %>

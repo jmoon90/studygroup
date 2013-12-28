@@ -8,6 +8,24 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def join
+    @user = current_user
+    @group = Group.find(params[:group_id])
+    args = { user: @user.id, group: @group.id }
+    Membership.seeder(args)
+    Group.add_user_to_group(args)
+    redirect_to group_path(@group)
+  end
+
+  def leave
+    @user = current_user
+    @group = Group.find(params[:group_id])
+    args = { user: nil, group: nil }
+    Membership.seeder(args)
+    Group.add_user_to_group(args)
+    redirect_to group_path(@group)
+  end
+
   def new
     @group = Group.new
   end

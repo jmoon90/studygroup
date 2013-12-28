@@ -3,6 +3,9 @@ Studygroup::Application.routes.draw do
 
   devise_for :users
 
-  resources :groups, only: [:index, :show, :new, :create]
+  resources :groups, only: [:index, :show, :new, :create] do
+    get 'join'
+    get 'leave'
+  end
   resources :tutorials, only: [:new, :create]
 end

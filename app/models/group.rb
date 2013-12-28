@@ -15,6 +15,10 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def self.add_user_to_group(args)
+    Membership.find_or_create_by(group_id: args[:group], user_id: args[:user])
+  end
+
   tutorial_index_and_name
   TUTORIAL_OPTIONS = @tutorials_list
 end
