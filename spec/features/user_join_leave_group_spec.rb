@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'Join or leave group' do
   given!(:group) { FactoryGirl.create(:group) }
   given(:user) { FactoryGirl.create(:user) }
+  given(:join) { first(:link, 'join').click }
   given(:leave) { first(:link, 'leave').click }
 
   before :each do
@@ -10,20 +11,24 @@ feature 'Join or leave group' do
   end
 
   scenario 'join' do
+    join
     expect(page).to have_content(user.email)
-  end
-
-  scenario 'successful join message' do
     expect(page).to have_content("Welcome to the group")
   end
 
-  scenario 'leave' do
-    leave
-    expect(page).to_not have_content(user.email)
+  scenario 'viewing joined group' do
+    join
+    expect(page).to_not have_content('join')
   end
 
-  scenario 'successful leave message' do
+  scenario 'leave' do
+    join
     leave
+    expect(page).to_not have_content(user.email)
     expect(page).to have_content("Sorry to see you leave")
+  end
+
+  scenario 'viewing new group' do
+    expect(page).to_not have_content('leave')
   end
 end
