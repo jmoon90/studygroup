@@ -44,14 +44,14 @@ class GroupsController < ApplicationController
     args = { user: @user.id, group: @group.id }
     create_membership(args)
 
-    redirect_to group_path(@group), notice: "Welcome to the group"
+    redirect_to group_path(@group), notice: 'Welcome to the group'
   end
 
   def leave
     current_user_and_group
     args = { user: @user.id, group: @group.id }
     delete_membership(args)
-    redirect_to group_path(@group), notice: "Sorry to see you leave"
+    redirect_to group_path(@group), notice: 'Sorry to see you leave'
   end
 
   def mygroup

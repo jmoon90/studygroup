@@ -1,6 +1,4 @@
 class Group < ActiveRecord::Base
-  # This value is not a constant so it shouldnt be in a constant
-
   validates_presence_of :tutorial_id
   validates_presence_of :name
 
