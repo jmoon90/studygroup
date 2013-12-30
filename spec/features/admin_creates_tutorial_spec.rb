@@ -17,9 +17,5 @@ feature "Tutorial list" do
 
     expect(page).to have_content("Name can't be blank")
   end
-
-  scenario 'tutorials form' do
-    expect(page).to have_content("Add tutorial")
-  end
 end
 

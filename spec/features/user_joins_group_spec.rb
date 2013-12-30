@@ -8,11 +8,26 @@ feature 'User join group' do
     log_in_user(user)
   end
 
-  scenario 'user joining a group' do
-    visit group_path(group)
-    click_on "Join Group"
+  context 'Group not full' do
+    before :each do
+      visit group_path(group)
+    end
 
-    expect(page).to have_content("Welcome to the group")
+    scenario 'user joining a group' do
+      click_on "Join Group"
+
+      expect(page).to have_content("Welcome to the group")
+    end
+
+    scenario 'viewing joined group' do
+      first(:link, 'Join Group').click
+
+      expect(page).to_not have_content('Join Group')
+    end
+
+    scenario 'viewing new group' do
+      expect(page).to_not have_content('Leave Group')
+    end
   end
 
   scenario 'group is full' do
@@ -22,17 +37,5 @@ feature 'User join group' do
     visit group_path(group)
 
     expect(page).to have_content("Full Group")
-  end
-
-  scenario 'viewing joined group' do
-    visit group_path(group)
-    first(:link, 'Join Group').click
-
-    expect(page).to_not have_content('Join Group')
-  end
-
-  scenario 'viewing new group' do
-    visit group_path(group)
-    expect(page).to_not have_content('Leave Group')
   end
 end
