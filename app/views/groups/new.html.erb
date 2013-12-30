@@ -17,8 +17,9 @@
 
   <div>
     <%= f.label :tutorial_id %>
-    <%= f.select(:tutorial_id, Group::TUTORIAL_OPTIONS, { :include_blank => 'Please select' }) %>
+    <%= f.collection_select :tutorial_id, Tutorial.all, :id, :name,
+                 { :include_blank => 'Please select' } %>
   <div>
-    <%= f.submit "Create group" %>
+    <%= f.submit "Create group", id: 'blah' %>
   </div>
 <% end %>

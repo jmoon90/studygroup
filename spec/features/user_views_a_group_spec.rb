@@ -3,7 +3,6 @@ require 'spec_helper'
 feature 'User views a group' do
   given(:user) { FactoryGirl.create(:user) }
   before :each do
-    FactoryGirl.create(:tutorial)
     FactoryGirl.create(:group)
     visit root_path
     first(:link, 'Hartl').click
@@ -15,7 +14,7 @@ feature 'User views a group' do
 
   scenario "User see's other users in group" do
     log_in_user(user)
-    click_on "join"
+    click_on "Join Group"
     expect(page).to have_content(user.email)
   end
 end

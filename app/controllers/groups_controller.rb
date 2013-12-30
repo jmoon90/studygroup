@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
   attr_reader :group
+
+  before_filter :authenticate_user!, only: [:new]
   def index
     @groups = Group.all
   end
