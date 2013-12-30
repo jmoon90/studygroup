@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 feature 'Sign in' do
-    given(:user) { FactoryGirl.create(:user) }
+  given(:user) { FactoryGirl.create(:user) }
+
   before(:each) do
     visit new_user_session_path
   end

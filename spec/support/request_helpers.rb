@@ -1,4 +1,4 @@
-module RequestHelper
+module DeviseLoginLogout
   include Warden::Test::Helpers
   Warden.test_mode!
 

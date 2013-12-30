@@ -43,6 +43,5 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.include RequestHelper
-  config.include SignInHelper
+  config.include DeviseLoginLogout
 end

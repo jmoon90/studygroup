@@ -19,7 +19,7 @@ feature 'User join group' do
       expect(page).to have_content("Welcome to the group")
     end
 
-    scenario 'viewing joined group' do
+    scenario 'user is part of the group' do
       first(:link, 'Join Group').click
 
       expect(page).to_not have_content('Join Group')
