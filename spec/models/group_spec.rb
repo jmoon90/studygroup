@@ -9,6 +9,5 @@ describe Group do
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :tutorial_id }
-
 end
 

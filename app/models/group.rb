@@ -1,4 +1,7 @@
 class Group < ActiveRecord::Base
+  # This value is not a constant so it shouldnt be in a constant
+  TUTORIAL_OPTIONS = @tutorials_list
+
   validates_presence_of :tutorial_id
   validates_presence_of :name
 
@@ -7,6 +10,7 @@ class Group < ActiveRecord::Base
   has_many :memberships,
     dependent: :destroy,
     inverse_of: :group
+
   has_many :users,
     through: :memberships
 
@@ -22,6 +26,4 @@ class Group < ActiveRecord::Base
   end
 
   tutorial_index_and_name
-  TUTORIAL_OPTIONS = @tutorials_list
-
 end

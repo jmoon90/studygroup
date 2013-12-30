@@ -8,10 +8,12 @@ describe Membership do
   it { should have_valid(:group_id).when(Group.new) }
 
   describe "#seeder" do
-    membership = FactoryGirl.create(:membership)
     it "joins user and group table" do
-      group = membership.group_id
-      user = membership.user_id
+      group = FactoryGirl.create(:group)
+      user = FactoryGirl.create(:user)
+
+      group = group.id
+      user = user.id
       args = { group: group, user: user }
 
       Membership.seeder(args)

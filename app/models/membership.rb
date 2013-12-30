@@ -10,9 +10,6 @@ class Membership < ActiveRecord::Base
         mem.user_id = args[:user]
         mem.save
       end
-      return "worked"
-    else
-      return "Too many people in group"
     end
   end
 end
