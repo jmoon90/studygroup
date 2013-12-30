@@ -4,7 +4,9 @@ class Group < ActiveRecord::Base
 
   belongs_to :tutorial
 
-  has_many :memberships
+  has_many :memberships,
+    dependent: :destroy,
+    inverse_of: :group
   has_many :users,
     through: :memberships
 
