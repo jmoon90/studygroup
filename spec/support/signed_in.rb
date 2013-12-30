@@ -4,4 +4,8 @@ module SignInHelper
     first(:link, 'Hartl').click
     log_in_user(user)
   end
+
+  def sign_out(user)
+    logout_user(user)
+  end
 end
