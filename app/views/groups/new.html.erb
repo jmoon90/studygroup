@@ -20,6 +20,6 @@
     <%= f.collection_select :tutorial_id, Tutorial.all, :id, :name,
                  { :include_blank => 'Please select' } %>
   <div>
-    <%= f.submit "Create group", id: 'blah' %>
+    <%= f.submit "Create group", class: 'Create group' %>
   </div>
 <% end %>

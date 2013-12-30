@@ -11,14 +11,14 @@ feature Group do
   context 'signed in yo' do
     before(:each) do
       log_in_user(user)
+      Tutorial.create!(name: "Ruby Monk")
       visit new_group_path
     end
 
     scenario 'user can select a tutorial' do
-      tut = Tutorial.create!(name: "Ruby Monk")
 
       fill_in "Name", with: 'Pirates'
-      select tut.name, from: "Tutorial"
+      select "Ruby Monk", from: "Tutorial"
 
       click_on 'Create group'
       page.should have_content('Success')
