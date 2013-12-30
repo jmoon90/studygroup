@@ -21,4 +21,5 @@ class Group < ActiveRecord::Base
 
   tutorial_index_and_name
   TUTORIAL_OPTIONS = @tutorials_list
+
 end

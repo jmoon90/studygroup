@@ -12,9 +12,13 @@ class GroupsController < ApplicationController
     @user = current_user
     @group = Group.find(params[:group_id])
     args = { user: @user.id, group: @group.id }
-    Membership.seeder(args)
-    Group.add_user_to_group(args)
-    redirect_to group_path(@group), notice: "Welcome to the group"
+    msg = Membership.seeder(args)
+    if msg == "Too many people in group"
+      redirect_to group_path(@group), notice: "Too many people in group"
+    else
+      Group.add_user_to_group(args)
+      redirect_to group_path(@group), notice: "Welcome to the group"
+    end
   end
 
   def leave
