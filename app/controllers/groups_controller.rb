@@ -1,13 +1,17 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
 
-  def seed_membership(args)
-    Membership.add_user_and_group(args)
-  end
-
   def current_user_and_group
     @user = current_user
     @group = Group.find(params[:group_id])
+  end
+
+  def create_membership(args)
+    Membership.add_user_and_group(args)
+  end
+
+  def delete_membership(args)
+    Membership.delete_user_and_group(args)
   end
 
   def index
@@ -16,26 +20,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-  end
-
-  def join
-    current_user_and_group
-    args = { user: @user.id, group: @group.id }
-    notice = seed_membership(args)
-
-    redirect_to group_path(@group), notice: notice
-  end
-
-  def leave
-    current_user_and_group
-    individual_mem = Membership.where(group_id: @group, user_id: @user.id)
-    Membership.delete(individual_mem)
-    redirect_to group_path(@group), notice: "Sorry to see you leave"
-  end
-
-  def mygroup
-    @user = current_user
-    @memberships = Membership.where(user_id: @user.id)
   end
 
   def new
@@ -53,6 +37,26 @@ class GroupsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def join
+    current_user_and_group
+    args = { user: @user.id, group: @group.id }
+    create_membership(args)
+
+    redirect_to group_path(@group), notice: "Welcome to the group"
+  end
+
+  def leave
+    current_user_and_group
+    args = { user: @user.id, group: @group.id }
+    delete_membership(args)
+    redirect_to group_path(@group), notice: "Sorry to see you leave"
+  end
+
+  def mygroup
+    @user = current_user
+    @memberships = Membership.where(user_id: @user.id)
   end
 
   private

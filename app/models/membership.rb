@@ -5,11 +5,11 @@ class Membership < ActiveRecord::Base
     inverse_of: :memberships
 
   def self.add_user_and_group(args)
-    if Membership.where(group_id: args[:group]).count < 3
-      Membership.find_or_create_by(group_id: args[:group], user_id: args[:user])
-      return "Welcome to the group"
-    else
-      return "Too many people in group"
-    end
+    Membership.find_or_create_by(group_id: args[:group], user_id: args[:user])
+  end
+
+  def self.delete_user_and_group(args)
+    individual_mem = Membership.where(group_id: args[:group], user_id: args[:user])
+    Membership.delete(individual_mem)
   end
 end
