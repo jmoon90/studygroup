@@ -18,14 +18,14 @@ feature 'Join or leave group' do
     expect(page).to have_content("Welcome to the group")
   end
 
-  scenario 'join group with maxed limit' do
-    # HOW DO YOU WRITE TEST TO SEE IF THERE ARE ALREADY 2 PEOPL IN THE
-    # DATA BASE
-    #Membership.find_or_create_by(group_id: group.id, user_id: user.id)
-    #Membership.find_or_create_by(group_id: group.id, user_id: user1.id)
-    expect(page).to have_content(user1.email)
-    expect(page).to have_content(user.email)
-  end
+ # scenario 'join group with maxed limit' do
+ #   # HOW DO YOU WRITE TEST TO SEE IF THERE ARE ALREADY 2 PEOPL IN THE
+ #   # DATA BASE
+ #   #Membership.find_or_create_by(group_id: group.id, user_id: user.id)
+ #   #Membership.find_or_create_by(group_id: group.id, user_id: user1.id)
+ #   expect(page).to have_content(user1.email)
+ #   expect(page).to have_content(user.email)
+ # end
 
   scenario 'viewing joined group' do
     join

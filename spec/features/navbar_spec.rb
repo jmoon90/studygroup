@@ -2,9 +2,9 @@ require 'spec_helper'
 
 feature 'Navbar' do
   scenario 'signed in user' do
-    FactoryGirl.create(:group)
     user = FactoryGirl.create(:user)
-    sign_in(user)
+    log_in_user(user)
+    visit root_path
 
     expect(page).to have_content('Profile')
   end
