@@ -4,10 +4,6 @@ feature 'User join group' do
   given(:group) { FactoryGirl.create(:group) }
   given(:user) { FactoryGirl.create(:user) }
 
-  def join_group
-    first(:link, 'Join Group').click
-  end
-
   before :each do
     log_in_user(user)
   end
@@ -29,12 +25,14 @@ feature 'User join group' do
   end
 
   scenario 'viewing joined group' do
-    join_group
+    visit group_path(group)
+    first(:link, 'Join Group').click
 
-    expect(page).to_not have_content('join')
+    expect(page).to_not have_content('Join Group')
   end
 
   scenario 'viewing new group' do
-    expect(page).to_not have_content('leave')
+    visit group_path(group)
+    expect(page).to_not have_content('Leave Group')
   end
 end

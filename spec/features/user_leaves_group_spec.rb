@@ -1,6 +1,8 @@
+require 'spec_helper'
+
 feature 'User leaves group' do
-  given!(:group) { FactoryGirl.create(:group) }
   given(:user) { FactoryGirl.create(:user) }
+  given(:group) { FactoryGirl.create(:group) }
 
   def join_group
     first(:link, 'Join Group').click
@@ -11,6 +13,7 @@ feature 'User leaves group' do
   end
 
   before :each do
+    visit group_path(group)
     log_in_user(user)
     join_group
   end

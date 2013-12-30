@@ -1,7 +1,6 @@
 <h1><%= @group.name %></h1>
 <%= @group.tutorial.name %>
 
-
 <% if @group.users.include?(current_user) %>
   <%= link_to 'Leave Group', group_leave_path(@group) %>
 <% else %>
