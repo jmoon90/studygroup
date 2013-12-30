@@ -6,11 +6,8 @@ class TutorialsController < ApplicationController
   def create
     @tutorial = Tutorial.new(tutorial_params)
 
-    if @tutorial.save
-      redirect_to groups_path, notice: "Added new tutorial"
-    else
-      render :new
-    end
+    @tutorial.save ? (redirect_to groups_path, notice: "Added new tutorial") :
+      (render :new)
   end
 
   private

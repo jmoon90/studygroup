@@ -16,7 +16,7 @@ describe Membership do
       user = user.id
       args = { group: group, user: user }
 
-      Membership.seeder(args)
+      Membership.add_user_and_group(args)
       expect(Membership.all).should_not be_empty
     end
   end

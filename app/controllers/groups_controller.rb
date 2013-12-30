@@ -1,7 +1,15 @@
 class GroupsController < ApplicationController
-  attr_reader :group
-
   before_filter :authenticate_user!, only: [:new]
+
+  def seed_membership(args)
+    Membership.add_user_and_group(args)
+  end
+
+  def current_user_and_group
+    @user = current_user
+    @group = Group.find(params[:group_id])
+  end
+
   def index
     @groups = Group.all
   end
@@ -11,21 +19,15 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @user = current_user
-    @group = Group.find(params[:group_id])
+    current_user_and_group
     args = { user: @user.id, group: @group.id }
-    msg = Membership.seeder(args)
-    if msg.class == Membership
-      Group.add_user_to_group(args)
-      redirect_to group_path(@group), notice: "Welcome to the group"
-    else
-      redirect_to group_path(@group), notice: "Too many people in group" if msg != []
-    end
+    notice = seed_membership(args)
+
+    redirect_to group_path(@group), notice: notice
   end
 
   def leave
-    @user = current_user
-    @group = Group.find(params[:group_id])
+    current_user_and_group
     individual_mem = Membership.where(group_id: @group, user_id: @user.id)
     Membership.delete(individual_mem)
     redirect_to group_path(@group), notice: "Sorry to see you leave"
@@ -46,7 +48,7 @@ class GroupsController < ApplicationController
 
     if @group.save
       args = { user: @user.id, group: @group.id }
-      Membership.seeder(args)
+      Membership.add_user_and_group(args)
       redirect_to groups_path, notice: 'Success'
     else
       render :new
