@@ -6,8 +6,9 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'valid_attribute'
+
 require 'coveralls'
-Coveralls.wear!
+Coveralls.wear!('rails')
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
