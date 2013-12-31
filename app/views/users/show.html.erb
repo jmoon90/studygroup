@@ -1,0 +1,7 @@
+<h1>My Group </h1>
+<ul>
+  <% @memberships.each do |membership| %>
+    <li><%= link_to membership.group.name, group_path(membership.group_id) %></li>
+  <% end %>
+</ul>
+
