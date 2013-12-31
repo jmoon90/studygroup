@@ -12,4 +12,6 @@ Studygroup::Application.routes.draw do
   end
 
   resources :tutorials, only: [:new, :create]
+
+  resources :posts, only: [:show ,:new, :create]
 end
