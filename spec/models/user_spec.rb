@@ -5,5 +5,7 @@ describe User do
   it { should have_many(:groups).through(:memberships) }
 
   it { should have_many(:memberships).dependent(:destroy) }
+
+  it { should have_many(:posts) }
 end
 

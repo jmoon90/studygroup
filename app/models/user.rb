@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   has_many :groups,
     through: :memberships,
     inverse_of: :user
+
+  has_many :posts,
+    inverse_of: :user
 end

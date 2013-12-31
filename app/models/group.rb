@@ -11,6 +11,9 @@ class Group < ActiveRecord::Base
   has_many :users,
     through: :memberships
 
+  has_many :posts,
+    inverse_of: :group
+
   def self.tutorial_index_and_name
     @tutorials_list = []
     Tutorial.all.each do |tutorial|
