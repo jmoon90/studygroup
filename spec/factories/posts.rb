@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :post do
-    title "My first post"
-    description "This is my first post of the year"
+    title "My last post"
+    description "You guys are like so 2013"
 
     association :user
     association :group

@@ -13,5 +13,10 @@ Studygroup::Application.routes.draw do
 
   resources :tutorials, only: [:new, :create]
 
-  resources :posts, only: [:show ,:new, :create]
+  resources :posts, only: [:show] do
+    collection do
+      get 'new/:id', to: 'posts#new', as: 'new'
+      post ':id', to: 'posts#create', as: ''
+    end
+  end
 end

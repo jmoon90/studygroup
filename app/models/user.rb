@@ -4,13 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :memberships
   has_many :memberships,
     dependent: :destroy,
     inverse_of: :user
 
   has_many :groups,
     through: :memberships,
-    inverse_of: :user
+    inverse_of: :users
 
   has_many :posts,
     inverse_of: :user

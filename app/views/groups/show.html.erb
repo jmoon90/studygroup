@@ -16,3 +16,16 @@
     <li><%= user.email %></li>
   <% end %>
 </ul>
+
+<% if @group.users.include?(current_user) %>
+<ul class="post-list">
+  <%= link_to "Create Post", new_posts_path(@group) %>
+</ul>
+<% end %>
+
+<ul class="individual-post">
+  <% @group.posts.each do |post| %>
+    <li><%= post.title %></li>
+    <li><%= post.description %></li>
+  <% end %>
+</ul>

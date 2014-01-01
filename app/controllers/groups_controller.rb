@@ -14,6 +14,21 @@ class GroupsController < ApplicationController
     Membership.delete_user_and_group(args)
   end
 
+#  def create_post(args)
+#    Post.add_user_and_group(args)
+#  end
+#
+#  def delete_post(args)
+#    Post.delete_user_and_group(args)
+#  end
+
+#Not sure where this belongs yet
+  def post
+    current_user_and_group
+    args = { user: @user.id, group: @group.id }
+    create_post(args)
+  end
+
   def index
     @groups = Group.all
   end
