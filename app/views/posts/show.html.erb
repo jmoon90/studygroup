@@ -1,14 +1,25 @@
-<h1> <%= @post.title %> </h1>
-<%= @post.description %>
+<%= link_to "Back to Group", group_path(@post.group) %>
+<div class="row">
+  <div class="large-10 columns"><h1><%= @post.title %></h1></div>
+</div>
+<div class="row">
+  <div class="large-10 columns"><h2><%= @post.description %></h2></div>
+</div>
+<br>
 
 <% if @post.comments == [] %>
   <p>No answers yet<p>
 <% else %>
-  <ul>
-    <% @post.comments.each do |comment| %>
-      <li><%= comment.answer %></li>
-    <% end %>
-  </ul>
+  <h3> Comments </h3>
+
+  <% @post.comments.each do |comment| %>
+    <div class="row">
+      <div class="small-2 columns"><%= comment.user.email %></div>
+      <div class="small-10 columns"><%= comment.answer %></div>
+      <br>
+    </div>
+  <% end %>
+      <br>
 <% end %>
 
 <%= form_for([@post, @comment]) do |f| %>
