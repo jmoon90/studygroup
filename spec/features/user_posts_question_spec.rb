@@ -39,7 +39,6 @@ feature 'Group member post' do
 
     visit group_path(membership.group)
     expect(page).to have_content('Silly')
-    expect(page).to have_content('Willy')
   end
 end
 

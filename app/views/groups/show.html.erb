@@ -25,7 +25,6 @@
 
 <ul class="individual-post">
   <% @group.posts.each do |post| %>
-    <li><%= post.title %></li>
-    <li><%= post.description %></li>
+    <h3><%= link_to post.title, post_path(post) %></h3>
   <% end %>
 </ul>
