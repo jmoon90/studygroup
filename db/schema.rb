@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140101192734) do
   create_table "comments", force: true do |t|
     t.integer  "post_id"
     t.integer  "user_id"
-    t.string   "description"
+    t.string   "answer",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

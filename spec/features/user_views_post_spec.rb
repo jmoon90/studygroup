@@ -1,30 +1,26 @@
 require 'spec_helper'
 
 feature 'user visit post' do
-  given(:post) { FactoryGirl.create(:post) }
-  scenario 'write comment' do
+  given(:comment) { FactoryGirl.create(:comment) }
 
-    visit post_path(post)
-    click_on new_comment_path
-    fill_in 'Comment', comment.body
-    click 'Post Your Answer'
+  scenario 'valid input' do
+    visit post_path(comment.post)
+    fill_in 'Your Answer', with: comment.answer
+    click_on 'Post Your Answer'
 
-    expect(page).to have_content(comment.body)
+    expect(page).to have_content(comment.answer)
   end
 
-  scenario 'write comment' do
-    visit post_path(post)
-    click_on new_comment_path
-    click 'Post Your Answer'
+  scenario 'invalid input' do
+    visit post_path(comment.post)
+    click_on 'Post Your Answer'
 
-    expect(page).to have_content('There was an error')
+    page.should have_selector('#notice')
   end
 
-  scenario 'visit page' do
+  scenario 'views page' do
+    post = FactoryGirl.create(:post)
     visit post_path(post)
-    click_on new_comment_path
-    expect(page).to have_content(Post.title)
-    expect(page).to have_content(Post.description)
+    expect(page).to have_content('No answers yet')
   end
-
 end

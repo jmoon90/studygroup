@@ -1,4 +1,28 @@
-<p><%= flash[:notice] %></p>
 <h1> <%= @post.title %> </h1>
 <%= @post.description %>
 
+<% if @post.comments == [] %>
+  <p>No answers yet<p>
+<% else %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li><%= comment.answer %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for([@post, @comment]) do |f| %>
+  <form>
+    <div class="row">
+      <div class="large-12 columns">
+        <label><%= f.label :answer, "Your Answer" %></label>
+        <div class='small-6 columns'>
+          <%= f.text_field :answer %>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Post Your Answer' %>
+    </div>
+  </form>
+<% end %>
