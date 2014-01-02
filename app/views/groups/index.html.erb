@@ -2,8 +2,8 @@
 
 <div><%= link_to "Create New Group", new_group_path %></div>
   <br>
-<ul>
-<%  @groups.each do |group| %>
-  <li><%= link_to group.name, group_path(group), class: 'group_name' %></li>
-<% end %>
+<ul class="small-block-grid-2">
+  <%  @groups.each do |group| %>
+    <li><%= link_to group.name, group_path(group), class: 'group_name' %></li>
+  <% end %>
 </ul>

@@ -13,6 +13,7 @@
 
 <ul class="group-member-list">
   <% @group.users.each do |user| %>
+    <%= gravatar_for user %>
     <li><%= user.email %></li>
   <% end %>
 </ul>
