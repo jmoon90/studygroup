@@ -32,6 +32,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'compass'
 
+gem 'gravatar_image_tag'
+
 group :development, :test do
   gem 'dotenv'
   gem 'pry-rails'

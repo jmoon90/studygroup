@@ -1,9 +1,11 @@
-<h1>My Group </h1>
+<% provide("My Page") %>
 
+<h1><%= @user.email %> Group</h1>
+<%= gravatar_for @user %>
 
 <ul>
   <% @memberships.each do |membership| %>
-    <li><%= link_to membership.group.name, group_path(membership.group_id) %></li>
+        <li><%= link_to membership.group.name, group_path(membership.group_id) %></li>
   <% end %>
 </ul>
 
