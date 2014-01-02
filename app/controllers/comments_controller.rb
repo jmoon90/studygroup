@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :new]
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
@@ -10,6 +11,7 @@ class CommentsController < ApplicationController
     else
       flash[:notice] = 'There was an error. Please try again'
       render template: 'posts/show'
+      flash.now
     end
   end
 
