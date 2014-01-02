@@ -13,6 +13,6 @@ class TutorialsController < ApplicationController
   private
 
   def tutorial_params
-    params.require(:tutorial).permit(:name)
+    params.require(:tutorial).permit(:name, :image)
   end
 end

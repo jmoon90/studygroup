@@ -34,6 +34,10 @@ gem 'compass'
 
 gem 'gravatar_image_tag'
 
+gem 'carrierwave'
+
+gem 'rmagick'
+
 group :development, :test do
   gem 'dotenv'
   gem 'pry-rails'
