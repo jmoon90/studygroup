@@ -4,6 +4,7 @@ feature 'user visit post' do
   given(:comment) { FactoryGirl.create(:comment) }
 
   scenario 'valid input' do
+    log_in_user(comment.user)
     visit post_path(comment.post)
     fill_in 'Your Answer', with: comment.answer
     click_on 'Post Your Answer'
@@ -13,7 +14,6 @@ feature 'user visit post' do
   end
 
   scenario 'invalid input' do
-    pending "Flash message not displaying"
     post = FactoryGirl.create(:post)
     user = FactoryGirl.create(:user)
 
@@ -21,7 +21,7 @@ feature 'user visit post' do
     visit post_path(post)
     click_on 'Post Your Answer'
 
-    #page.should have_content("There was an error")
+    page.should have_content("There was an error")
   end
 
   scenario 'views page with no comments' do

@@ -23,17 +23,15 @@
 <% end %>
 
 <%= form_for([@post, @comment]) do |f| %>
-  <form>
-    <div class="row">
-      <div class="large-12 columns">
-        <label><%= f.label :answer, "Your Answer" %></label>
-        <div class='small-6 columns'>
-          <%= f.text_field :answer %>
-        </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label><%= f.label :answer, "Your Answer" %></label>
+      <div class='small-6 columns'>
+        <%= f.text_field :answer %>
       </div>
     </div>
-    <div class="actions">
-      <%= f.submit 'Post Your Answer' %>
-    </div>
-  </form>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Post Your Answer' %>
+  </div>
 <% end %>
