@@ -9,10 +9,14 @@
 <% end %>
 
 <%= form_for(@group) do |f| %>
-
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :size %>
+    <%= f.number_field :size, in: 1..12 %>
   </div>
 
   <div>

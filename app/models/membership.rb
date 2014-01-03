@@ -10,6 +10,6 @@ class Membership < ActiveRecord::Base
 
   def self.delete_user_and_group(args)
     individual_mem = Membership.where(group_id: args[:group], user_id: args[:user])
-    delete(individual_mem)
+    destroy(individual_mem)
   end
 end
