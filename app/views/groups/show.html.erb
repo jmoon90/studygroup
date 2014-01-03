@@ -2,12 +2,12 @@
 <%= @group.tutorial.name %>
 
 <% if @group.users.include?(current_user) %>
-  <%= link_to 'Leave Group', membership_leave_path(@group) %>
+  <%= button_to 'Leave Group', group_membership_path(@group, current_user), method: :delete %>
 <% else %>
   <% if @group.users.count >= @group.size %>
     <%= '| Full Group' %>
   <% else %>
-    <%= link_to 'Join Group', membership_join_path(@group) %>
+    <%= button_to "Join Group", group_memberships_path(@group), method: :post %>
   <% end %>
 <% end %>
 
