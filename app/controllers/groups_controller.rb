@@ -16,8 +16,7 @@ class GroupsController < ApplicationController
   def create
     @group = current_user.groups.build(group_params)
     if @group.save
-      args = { user: current_user.id, group: @group.id }
-      Membership.add_user_and_group(args)
+      group_memberships_path(@group)
       redirect_to groups_path, notice: 'Success'
     else
       render :new
