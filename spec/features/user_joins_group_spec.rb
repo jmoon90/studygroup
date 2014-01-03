@@ -33,6 +33,16 @@ feature 'User join group' do
   scenario 'group is full' do
     FactoryGirl.create(:membership, group: group)
     FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
+    FactoryGirl.create(:membership, group: group)
 
     visit group_path(group)
 
