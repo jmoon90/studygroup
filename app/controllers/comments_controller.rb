@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Answer posted successfully'
       redirect_to post_path(@post)
     else
-      flash[:notice] = 'There was an error. Please try again'
+      flash.now[:notice] = 'There was an error. Please try again'
       render template: 'posts/show'
     end
   end

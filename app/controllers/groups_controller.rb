@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :join]
+  before_filter :authenticate_user!, only: [:new, :create, :join]
 
   def current_user_and_group
     @user = current_user
@@ -27,10 +27,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @group = Group.new(group_params)
+    @group = current_user.groups.build(group_params)
 
     if @group.save
+      binding.pry
       args = { user: @user.id, group: @group.id }
       Membership.add_user_and_group(args)
       redirect_to groups_path, notice: 'Success'
