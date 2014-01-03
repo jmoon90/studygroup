@@ -5,12 +5,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new(:id => params[:id])
+    @post = Post.new(id: params[:id])
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
     @post.group_id = params[:id].to_i
 
     if @post.save
