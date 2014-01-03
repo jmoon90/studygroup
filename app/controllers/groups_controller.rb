@@ -1,11 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :join]
 
-  def current_user_and_group
-    @user = current_user
-    @group = Group.find(params[:group_id])
-  end
-
   def create_membership(args)
     Membership.add_user_and_group(args)
   end
@@ -36,21 +31,6 @@ class GroupsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def join
-    current_user_and_group
-    args = { user: @user.id, group: @group.id }
-    create_membership(args)
-
-    redirect_to group_path(@group), notice: 'Welcome to the group'
-  end
-
-  def leave
-    current_user_and_group
-    args = { user: @user.id, group: @group.id }
-    delete_membership(args)
-    redirect_to group_path(@group), notice: 'Sorry to see you leave'
   end
 
   def mygroup

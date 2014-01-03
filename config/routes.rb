@@ -20,4 +20,9 @@ Studygroup::Application.routes.draw do
       post ':id', to: 'posts#create', as: ''
     end
   end
+
+    resources :memberships, only: [] do
+      get 'join'  => 'memberships#create'
+      get 'leave' => 'memberships#destroy'
+    end
 end
