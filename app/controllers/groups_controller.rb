@@ -30,8 +30,7 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
 
     if @group.save
-      binding.pry
-      args = { user: @user.id, group: @group.id }
+      args = { user: current_user.id, group: @group.id }
       Membership.add_user_and_group(args)
       redirect_to groups_path, notice: 'Success'
     else
@@ -55,8 +54,7 @@ class GroupsController < ApplicationController
   end
 
   def mygroup
-    @user = current_user
-    @memberships = Membership.where(user_id: @user.id)
+    @memberships = Membership.where(user_id: current_user.id)
   end
 
   private

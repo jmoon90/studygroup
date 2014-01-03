@@ -1,7 +1,7 @@
 <% provide(:title, "My Page") %>
 
-<h1><%= @user.email %> Group</h1>
-<%= gravatar_for @user %>
+<h1><%= current_user.email %> Group</h1>
+<%= gravatar_for current_user %>
 
 <div class="row">
   <ul class="small-block-grid-3">
