@@ -2,13 +2,11 @@
 
 <div><%= link_to "Create New Group", new_group_path %></div>
   <br>
-<ul class="small-block-grid-2">
-  <%  @groups.each do |group| %>
-    <li><%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
-      <%= link_to group.name, group_path(group), class: 'group_name' %>
-      <% @args = Group.finds_max_size(group) %>
-      <% @args = Group.current_group_size(group) %>
-      <%= "#{@args[:current_group_size]} / #{@args[:group_max]}" %>
-    </li>
-  <% end %>
+<ul class="small-block-grid-2" id="groups">
+    <% @groups.each do |group| %>
+      <li><%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
+        <%= link_to group.name, group_path(group), class: 'group_name' %>
+        <%= "#{group.users.count} / #{group.size}" %>
+      </li>
+    <% end %>
 </ul>
