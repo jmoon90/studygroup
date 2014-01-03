@@ -18,7 +18,7 @@ feature 'user visit home page' do
     FactoryGirl.create(:membership, group: group)
     visit root_path
 
-    expect(page).to have_content('3/12')
+    expect(page).to have_content('3 / 12')
   end
 
   scenario 'sort full groups to the top' do
