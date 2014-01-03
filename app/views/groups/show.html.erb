@@ -4,7 +4,7 @@
 <% if @group.users.include?(current_user) %>
   <%= link_to 'Leave Group', membership_leave_path(@group) %>
 <% else %>
-  <% if @group.users.count >= 2 %>
+  <% if @group.users.count >= @group.size %>
     <%= '| Full Group' %>
   <% else %>
     <%= link_to 'Join Group', membership_join_path(@group) %>

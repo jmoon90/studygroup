@@ -1,14 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :join]
 
-  def create_membership(args)
-    Membership.add_user_and_group(args)
-  end
-
-  def delete_membership(args)
-    Membership.delete_user_and_group(args)
-  end
-
   def index
     @groups = Group.all
   end
@@ -23,7 +15,6 @@ class GroupsController < ApplicationController
 
   def create
     @group = current_user.groups.build(group_params)
-
     if @group.save
       args = { user: current_user.id, group: @group.id }
       Membership.add_user_and_group(args)
