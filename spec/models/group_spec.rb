@@ -10,6 +10,6 @@ describe Group do
   it { should validate_presence_of :name }
   it { should validate_presence_of :tutorial_id }
 
-  it { should have_many(:posts) }
+  it { should have_many(:posts).dependent(:destroy) }
 end
 
