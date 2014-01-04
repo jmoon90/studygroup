@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "Successfully posted to post"
-      redirect_to group_path(@post.group_id)
+      redirect_to group_path(@post.group)
     else
       flash[:notice] = "There was an error. Please try again."
       render :new
@@ -24,6 +24,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :user_id, :group_id)
+    params.require(:post).permit(:title, :description)
   end
 end

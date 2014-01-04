@@ -11,10 +11,10 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    group_id = params[:group_id].to_i
-    args = {group_id: group_id, user_id: current_user.id }
-    Membership.delete_user_and_group(args)
-    redirect_to group_path(group_id), notice: 'Sorry to see you leave'
+    @membership = Membership.where(group_id: params[:group_id],
+                                   user_id: params[:id])[0]
+    Membership.delete(@membership.id)
+    redirect_to group_path(@membership.group), notice: 'Sorry to see you leave'
   end
 
   private
