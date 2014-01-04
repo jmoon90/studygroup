@@ -30,6 +30,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:tutorial_id, :name)
+    params.require(:group).permit(:tutorial_id, :name, :size)
   end
 end
