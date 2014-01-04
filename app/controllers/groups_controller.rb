@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    @sorts = @groups.order(:size)
   end
 
   def show
@@ -25,6 +26,11 @@ class GroupsController < ApplicationController
 
   def mygroup
     @memberships = Membership.where(user_id: current_user.id)
+  end
+
+  def sort
+    @groups = Group.order("size ASC")
+    redirect_to groups_path, notice: 'Successfully sorted'
   end
 
   private
