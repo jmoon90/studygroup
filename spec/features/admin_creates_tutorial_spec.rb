@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 feature "Tutorial list" do
+  given(:tutorial) { FactoryGirl.create(:tutorial) }
+  given(:local_path) { File.join(Rails.root, '/spec/support/example.png') }
+
   before(:each) do
     visit new_tutorial_path
   end
-   given(:tutorial) { FactoryGirl.create(:tutorial) }
-   given(:local_path) { File.join(Rails.root, '/spec/support/example.png') }
 
   scenario 'valid inputs' do
 
