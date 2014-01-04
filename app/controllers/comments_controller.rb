@@ -3,15 +3,14 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @comment.user = current_user
 
     if @comment.save
       flash[:notice] = 'Answer posted successfully'
       redirect_to post_path(@post)
     else
-      flash[:notice] = 'There was an error. Please try again'
+      flash.now[:notice] = 'There was an error. Please try again'
       render template: 'posts/show'
-      flash.now
     end
   end
 

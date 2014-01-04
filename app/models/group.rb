@@ -4,7 +4,8 @@ class Group < ActiveRecord::Base
   validates_presence_of :size
   validates_inclusion_of :size, in: 1..12
 
-  belongs_to :tutorial
+  belongs_to :tutorial,
+    inverse_of: :groups
 
   has_many :memberships
   has_many :memberships,
@@ -16,13 +17,6 @@ class Group < ActiveRecord::Base
     inverse_of: :groups
 
   has_many :posts,
+    dependent: :destroy,
     inverse_of: :group
-
-  def self.acs
-    order(group.users :acs)
-  end
-
-  def self.desc
-    order(group.users :desc)
-  end
 end

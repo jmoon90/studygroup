@@ -8,5 +8,6 @@ class Post < ActiveRecord::Base
     inverse_of: :posts
 
   has_many :comments,
-    inverse_of: :post
+    inverse_of: :post,
+    dependent: :destroy
 end

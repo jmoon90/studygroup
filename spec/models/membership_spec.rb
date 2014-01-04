@@ -11,12 +11,10 @@ describe Membership do
     it "joins user and group table" do
       group = FactoryGirl.create(:group)
       user = FactoryGirl.create(:user)
+      #IF MembershipController create method changes, this will still
+      #pass
+      @membership = Membership.find_or_create_by(user_id: user.id, group_id: group.id)
 
-      group = group.id
-      user = user.id
-      args = { group: group, user: user }
-
-      Membership.add_user_and_group(args)
       expect(Membership.all).should_not be_empty
     end
   end

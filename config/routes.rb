@@ -4,11 +4,10 @@ Studygroup::Application.routes.draw do
   devise_for :users
 
   resources :groups, only: [:index, :show, :new, :create] do
-    get 'join'
-    get 'leave'
     collection do
       get 'mygroup'
     end
+    resources :memberships, only: [:create, :destroy]
   end
 
   resources :tutorials, only: [:new, :create]

@@ -5,17 +5,16 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new(:id => params[:id])
+    @post = Post.new(id: params[:id])
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
     @post.group_id = params[:id].to_i
 
     if @post.save
       flash[:notice] = "Successfully posted to post"
-      redirect_to group_path(@post.group_id)
+      redirect_to group_path(@post.group)
     else
       flash[:notice] = "There was an error. Please try again."
       render :new
@@ -25,6 +24,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :user_id, :group_id)
+    params.require(:post).permit(:title, :description)
   end
 end
