@@ -1,6 +1,7 @@
 <h1> Create New Group </h1>
 
 <% if @group.errors.any? %>
+  <%= flash[:notice] %>
   <ul>
     <% @group.errors.full_messages.each do |error| %>
       <li><%= error %></li>
@@ -9,21 +10,29 @@
 <% end %>
 
 <%= form_for(@group) do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class='row'>
+    <div class="small-4 columns">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :size %>
-    <%= f.number_field :size, in: 1..12 %>
+  <div class='row'>
+    <div class="small-4 columns">
+      <%= f.label :size %>
+      <%= f.number_field :size, in: 1..12 %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :tutorial_id %>
-    <%= f.collection_select :tutorial_id, Tutorial.all, :id, :name,
-                 { :include_blank => 'Please select' } %>
-  <div>
-    <%= f.submit "Create group", class: 'Create group' %>
+  <div class='row'>
+    <div class="small-4 columns">
+      <%= f.label :tutorial_id %>
+      <%= f.collection_select :tutorial_id, Tutorial.all, :id, :name,
+                   { :include_blank => 'Please select' } %>
+    </div>
   </div>
+
+    <div>
+      <%= f.submit 'Create group', class: 'Create group' %>
+    </div>
 <% end %>

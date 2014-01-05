@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
       group_memberships_path(@group)
       redirect_to groups_path, notice: 'Success'
     else
+      flash[:notice] = "Invalid input. Please try again"
       render :new
     end
   end
