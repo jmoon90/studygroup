@@ -4,17 +4,25 @@
   <br>
 <ul class="small-block-grid-2" id="groups">
 
-  <%= form_tag(groups_path, method: :get) do %>
-      <%= hidden_field_tag 'filter', 'highest_user_count' %>
-      <%= submit_tag "Sort by Most Users" %>
-  <% end %>
+<a href="#" data-dropdown="drop" class="tiny alert round button dropdown">Sort By</a><br>
+<ul id="drop" data-dropdown-content class="f-dropdown">
+  <li>
+    <%= form_tag(groups_path, method: :get) do %>
+        <%= hidden_field_tag 'filter', 'highest_user_count' %>
+        <%= submit_tag "Most Users" %>
+    <% end %>
+  </li>
+  <li>
+    <%= form_tag(groups_path, method: :get) do %>
+        <%= hidden_field_tag 'filter', 'lowest_user_count' %>
+        <%= submit_tag "Least Users" %>
+    <% end %>
+  </li>
+</ul>
 
-  <%= form_tag(groups_path, method: :get) do %>
-      <%= hidden_field_tag 'filter', 'lowest_user_count' %>
-      <%= submit_tag "Sort by Least Users" %>
-  <% end %>
+
   <% @groups.each do |group| %>
-    <li>
+    <li class = "groups">
       <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
       <%= "#{group.users.count} / #{group.size}" %>
       <%= link_to group.name, group_path(group), class: 'group_name' %>
