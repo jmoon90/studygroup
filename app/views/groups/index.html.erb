@@ -3,11 +3,21 @@
 <div><%= link_to "Create New Group", new_group_path %></div>
   <br>
 <ul class="small-block-grid-2" id="groups">
-  <%= button_to 'Sort by size', sort_groups_path %>
+
+  <%= form_tag(groups_path, method: :get) do %>
+      <%= hidden_field_tag 'filter', 'highest_user_count' %>
+      <%= submit_tag "Sort by Most Users" %>
+  <% end %>
+
+  <%= form_tag(groups_path, method: :get) do %>
+      <%= hidden_field_tag 'filter', 'lowest_user_count' %>
+      <%= submit_tag "Sort by Least Users" %>
+  <% end %>
   <% @groups.each do |group| %>
-    <li><%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
-      <%= link_to group.name, group_path(group), class: 'group_name' %>
+    <li>
+      <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
       <%= "#{group.users.count} / #{group.size}" %>
+      <%= link_to group.name, group_path(group), class: 'group_name' %>
     </li>
   <% end %>
 </ul>

@@ -2,8 +2,7 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :join]
 
   def index
-    @groups = Group.all
-    @sorts = @groups.order(:size)
+    @groups = filter_groups(params)
   end
 
   def show
@@ -28,14 +27,19 @@ class GroupsController < ApplicationController
     @memberships = Membership.where(user_id: current_user.id)
   end
 
-  def sort
-    @groups = Group.order("size ASC")
-    redirect_to groups_path, notice: 'Successfully sorted'
-  end
-
   private
 
   def group_params
     params.require(:group).permit(:tutorial_id, :name, :size)
+  end
+
+  def filter_groups(params)
+    if params[:filter] == 'highest_user_count'
+      Group.highest_user_count
+    elsif params[:filter] == 'lowest_user_count'
+      Group.lowest_user_count
+    else
+      Group.all
+    end
   end
 end

@@ -19,4 +19,17 @@ class Group < ActiveRecord::Base
   has_many :posts,
     dependent: :destroy,
     inverse_of: :group
+
+  def self.highest_user_count
+    sort = all.sort_by do |group|
+      group.users.count
+    end
+    sort.reverse
+  end
+
+  def self.lowest_user_count
+    all.sort_by do |group|
+      group.users.count
+    end
+  end
 end
