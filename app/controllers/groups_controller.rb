@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
     if @group.save
       group_memberships_path(@group)
-      redirect_to groups_path, notice: 'Success'
+      redirect_to groups_path, notice: 'Created group successfully'
     else
       flash[:notice] = "Invalid input. Please try again"
       render :new

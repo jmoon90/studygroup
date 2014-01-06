@@ -1,7 +1,6 @@
 <h1> Create New Group </h1>
 
 <% if @group.errors.any? %>
-  <%= flash[:notice] %>
   <ul>
     <% @group.errors.full_messages.each do |error| %>
       <li><%= error %></li>
@@ -32,7 +31,7 @@
     </div>
   </div>
 
-    <div>
-      <%= f.submit 'Create group', class: 'Create group' %>
-    </div>
+  <div>
+    <%= f.submit 'Create group', class: 'Create group' %>
+  </div>
 <% end %>

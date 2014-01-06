@@ -23,7 +23,7 @@ feature 'User in group' do
       select "Ruby Monk", from: 'Tutorial'
       click_on 'Create group'
 
-      page.should have_content('Success')
+      page.should have_content('Created group successfully')
     end
 
     scenario 'invalid input' do

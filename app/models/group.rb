@@ -2,7 +2,7 @@ class Group < ActiveRecord::Base
   validates_presence_of :tutorial_id
   validates_presence_of :name
   validates_presence_of :size
-  validates_inclusion_of :size, in: 1..12
+  validates_inclusion_of :size, in: 1..12, message: 'must be between 1 and 12'
 
   belongs_to :tutorial,
     inverse_of: :groups
