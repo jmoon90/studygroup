@@ -35,12 +35,10 @@ class GroupsController < ApplicationController
   end
 
   def filter_groups(params)
-    if params[:filter] == 'highest_user_count'
-      Group.highest_user_count
-    elsif params[:filter] == 'lowest_user_count'
-      Group.lowest_user_count
-    else
+    if params[:filter] == nil
       Group.all
+    else
+      Group.send(params[:filter])
     end
   end
 end

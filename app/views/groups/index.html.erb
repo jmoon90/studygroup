@@ -1,25 +1,23 @@
 <h1> Groups </h1>
 
-<div><%= link_to "Create New Group", new_group_path %></div>
-  <br>
+<div><%= link_to "Create New Group", new_group_path %></div><br>
 <ul class="small-block-grid-2" id="groups">
+  <a href="#" data-dropdown="drop" class="tiny alert round button dropdown">Sort By</a><br>
 
-<a href="#" data-dropdown="drop" class="tiny alert round button dropdown">Sort By</a><br>
-<ul id="drop" data-dropdown-content class="f-dropdown">
-  <li>
-    <%= form_tag(groups_path, method: :get) do %>
+  <ul id="drop" data-dropdown-content class="f-dropdown">
+    <li>
+      <%= form_tag(groups_path, method: :get) do %>
         <%= hidden_field_tag 'filter', 'highest_user_count' %>
         <%= submit_tag "Most Users" %>
-    <% end %>
-  </li>
-  <li>
-    <%= form_tag(groups_path, method: :get) do %>
+      <% end %>
+    </li>
+    <li>
+      <%= form_tag(groups_path, method: :get) do %>
         <%= hidden_field_tag 'filter', 'lowest_user_count' %>
         <%= submit_tag "Least Users" %>
-    <% end %>
-  </li>
-</ul>
-
+      <% end %>
+    </li>
+  </ul>
 
   <% @groups.each do |group| %>
     <li class = "groups">

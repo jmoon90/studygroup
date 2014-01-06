@@ -13,7 +13,7 @@ feature 'User in group' do
   context 'signed in' do
     before(:each) do
       log_in_user(user)
-      Tutorial.create!(name: 'Ruby Monk')
+      Tutorial.create(name: 'Ruby Monk')
       visit new_group_path
     end
 
@@ -38,7 +38,7 @@ feature 'User in group' do
       select 'Ruby Monk', from: 'Tutorial'
       click_on 'Create group'
 
-      page.should have_content("must be less than or equal to 12")
+      page.should have_content('Size must be between 1 and 12')
     end
   end
 end
