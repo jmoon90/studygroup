@@ -23,12 +23,12 @@ class Group < ActiveRecord::Base
     dependent: :destroy,
     inverse_of: :group
 
-  def self.highest_user_count
-    joins(:memberships).joins(:users).order(:name).distinct
+  def self.most_users
+    all.order(memberships_count: :desc)
   end
 
-  def self.lowest_user_count
-    joins(:memberships).joins(:users).order(name: :desc).distinct
+  def self.least_users
+    all.order(:memberships_count)
   end
 
   def all
@@ -40,11 +40,8 @@ class Group < ActiveRecord::Base
     send(options)
   end
 
-  def self.users_in_group
-    Group.all.each do |group|
-    binding.pry
-      @user_in_group = group.users.count
-    end
+  def users_in_group
+    users.count
   end
 
   def self.group_size

@@ -7,13 +7,13 @@
   <ul id="drop" data-dropdown-content class="f-dropdown">
     <li>
       <%= form_tag(groups_path, method: :get) do %>
-        <%= hidden_field_tag 'filter', 'highest_user_count' %>
+        <%= hidden_field_tag 'sort', 'most_users' %>
         <%= submit_tag "Most Users" %>
       <% end %>
     </li>
     <li>
       <%= form_tag(groups_path, method: :get) do %>
-        <%= hidden_field_tag 'filter', 'lowest_user_count' %>
+        <%= hidden_field_tag 'sort', 'least_users' %>
         <%= submit_tag "Least Users" %>
       <% end %>
     </li>
@@ -22,7 +22,7 @@
   <% @groups.each do |group| %>
     <li class='groups'>
       <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
-      <%= "#{group.users.count} / #{group.size}" %>
+      <%= "#{group.users_in_group} / #{group.size}" %>
       <%= link_to group.name, group_path(group), class: 'group_name' %>
     </li>
   <% end %>
