@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :join]
 
   def index
-    @groups = filter_groups(params)
+    @groups = Group.filtered_by(params[:sort])
   end
 
   def show
@@ -32,13 +32,5 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:tutorial_id, :name, :size)
-  end
-
-  def filter_groups(params)
-    if params[:filter] == nil
-      Group.all
-    else
-      Group.send(params[:filter])
-    end
   end
 end
