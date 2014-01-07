@@ -36,6 +36,8 @@ gem 'gravatar_image_tag'
 
 gem 'carrierwave'
 
+gem 'simple_form'
+
 gem 'rmagick'
 
 group :development, :test do
