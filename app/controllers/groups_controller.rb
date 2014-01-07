@@ -3,9 +3,6 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.filtered_by(params[:filter])
-    @users_in_group = Group.users_in_group
-    @group_size = Group.group_size
-
   end
 
   def show

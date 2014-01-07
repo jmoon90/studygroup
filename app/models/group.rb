@@ -40,14 +40,7 @@ class Group < ActiveRecord::Base
     send(options)
   end
 
-  def self.users_in_group
-    Group.all.each do |group|
-    binding.pry
-      @user_in_group = group.users.count
-    end
-  end
-
-  def self.group_size
-    @group_size = group.size
+  def users_in_group
+    users.count
   end
 end
