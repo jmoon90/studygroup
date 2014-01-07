@@ -1,4 +1,7 @@
 class Group < ActiveRecord::Base
+  attr_accessor :users_in_group
+  attr_accessor :group_size
+
   validates_presence_of :tutorial_id
   validates_presence_of :name
   validates_presence_of :size
@@ -21,15 +24,30 @@ class Group < ActiveRecord::Base
     inverse_of: :group
 
   def self.highest_user_count
-    sort = all.sort_by do |group|
-      group.users.count
-    end
-    sort.reverse
+    joins(:memberships).joins(:users).order(:name).distinct
   end
 
   def self.lowest_user_count
-    all.sort_by do |group|
-      group.users.count
+    joins(:memberships).joins(:users).order(name: :desc).distinct
+  end
+
+  def all
+    Group.all
+  end
+
+  def self.filtered_by(options)
+    options = 'all' if options.nil?
+    send(options)
+  end
+
+  def self.users_in_group
+    Group.all.each do |group|
+    binding.pry
+      @user_in_group = group.users.count
     end
+  end
+
+  def self.group_size
+    @group_size = group.size
   end
 end
