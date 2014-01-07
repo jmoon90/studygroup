@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'User in group' do
+feature 'User with account' do
   given(:user) { FactoryGirl.create(:user) }
 
   context 'not signed in' do
