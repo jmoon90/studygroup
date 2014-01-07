@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature Group do
+feature 'User with account' do
   given(:user) { FactoryGirl.create(:user) }
 
   context 'not signed in' do
@@ -13,22 +13,32 @@ feature Group do
   context 'signed in' do
     before(:each) do
       log_in_user(user)
-      Tutorial.create!(name: "Ruby Monk")
+      Tutorial.create(name: 'Ruby Monk')
       visit new_group_path
     end
 
     scenario 'user can select a tutorial' do
-      fill_in "Name", with: 'Pirates'
-      select "Ruby Monk", from: "Tutorial"
+      fill_in 'Name', with: 'Pirates'
+      fill_in 'Size', with: 12
+      select "Ruby Monk", from: 'Tutorial'
       click_on 'Create group'
 
-      page.should have_content('Success')
+      page.should have_content('Created group successfully')
     end
 
     scenario 'invalid input' do
       click_on 'Create group'
 
       page.should have_content("can't be blank")
+    end
+
+    scenario 'invalid size' do
+      fill_in 'Name', with: 'Pirates'
+      fill_in 'Size', with: 13
+      select 'Ruby Monk', from: 'Tutorial'
+      click_on 'Create group'
+
+      page.should have_content('Size must be between 1 and 12')
     end
   end
 end
