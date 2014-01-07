@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
+      MessageConfirmation.content(@message).deliver
       flash[:notice] = 'Your message has been sent.'
       redirect_to root_path
     else
@@ -18,6 +19,10 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:email, :first_name, :last_name, :description, :subject)
+    params.require(:message).permit(:email,
+                                    :first_name,
+                                    :last_name,
+                                    :description,
+                                    :subject)
   end
 end

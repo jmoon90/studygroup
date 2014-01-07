@@ -54,4 +54,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include DeviseLoginLogout
+
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 end
