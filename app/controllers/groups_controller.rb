@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :join]
 
   def index
-    @groups = Group.filtered_by(params[:filter])
+    @groups = Group.filtered_by(params[:sort])
   end
 
   def show

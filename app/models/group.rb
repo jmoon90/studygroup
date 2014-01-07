@@ -23,12 +23,12 @@ class Group < ActiveRecord::Base
     dependent: :destroy,
     inverse_of: :group
 
-  def self.highest_user_count
-    joins(:memberships).joins(:users).order(:name).distinct
+  def self.most_users
+    all.order(memberships_count: :desc)
   end
 
-  def self.lowest_user_count
-    joins(:memberships).joins(:users).order(name: :desc).distinct
+  def self.least_users
+    all.order(:memberships_count)
   end
 
   def all
