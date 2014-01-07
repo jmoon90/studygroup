@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102213225) do
+ActiveRecord::Schema.define(version: 20140107144038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,25 @@ ActiveRecord::Schema.define(version: 20140102213225) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "size",              default: 6, null: false
+    t.integer  "memberships_count", default: 0
   end
+
+  add_index "groups", ["memberships_count"], name: "index_groups_on_memberships_count", using: :btree
 
   create_table "memberships", force: true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "email",       null: false
+    t.string   "subject",     null: false
+    t.string   "description", null: false
+    t.string   "first_name",  null: false
+    t.string   "last_name",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

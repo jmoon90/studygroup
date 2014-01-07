@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :join]
 
   def index
-    @groups = Group.all
+    @groups = Group.filtered_by(params[:sort])
   end
 
   def show
@@ -17,8 +17,9 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
     if @group.save
       group_memberships_path(@group)
-      redirect_to groups_path, notice: 'Success'
+      redirect_to groups_path, notice: 'Created group successfully'
     else
+      flash[:notice] = "Invalid input. Please try again"
       render :new
     end
   end
@@ -30,6 +31,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:tutorial_id, :name)
+    params.require(:group).permit(:tutorial_id, :name, :size)
   end
 end

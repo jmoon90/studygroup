@@ -14,8 +14,10 @@ class User < ActiveRecord::Base
     inverse_of: :users
 
   has_many :posts,
+    dependent: :nullify,
     inverse_of: :user
 
   has_many :comments,
+    dependent: :nullify,
     inverse_of: :user
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'User join group' do
-  given(:group) { FactoryGirl.create(:group) }
+  given(:group) { FactoryGirl.create(:group, size: 4) }
   given(:user) { FactoryGirl.create(:user) }
 
   before :each do
@@ -31,13 +31,9 @@ feature 'User join group' do
   end
 
   scenario 'group is full' do
-    FactoryGirl.create(:membership, group: group)
-    FactoryGirl.create(:membership, group: group)
-    FactoryGirl.create(:membership, group: group)
-    FactoryGirl.create(:membership, group: group)
-    FactoryGirl.create(:membership, group: group)
-    FactoryGirl.create(:membership, group: group)
-
+    4.times do
+      FactoryGirl.create(:membership, group: group)
+    end
     visit group_path(group)
 
     expect(page).to have_content("Full Group")
