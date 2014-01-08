@@ -11,21 +11,27 @@
   <% end %>
 <% end %>
 
-<ul class="group-member-list">
-  <% @group.users.each do |user| %>
-    <%= gravatar_for user %>
-    <li><%= user.email %></li>
-  <% end %>
-</ul>
+<div class='row'>
+  <div class='small-1 columns side'>
+    <ul class="side-nav group-member-list">
+      <% @group.users.each do |user| %>
+        <%= gravatar_for user %>
+        <li><%= user.email %></li>
+      <% end %>
+    </ul>
+  </div>
 
-<% if @group.users.include?(current_user) %>
-<ul class="post-list">
-  <%= link_to "Create Post", new_posts_path(@group) %>
-</ul>
-<% end %>
+  <div class='small-10 columns'>
+    <% if @group.users.include?(current_user) %>
+    <ul class="post-list">
+      <%= link_to "Create Post", new_posts_path(@group) %>
+    </ul>
+    <% end %>
 
-<ul class="individual-post">
-  <% @group.posts.each do |post| %>
-    <h3><%= link_to post.title, post_path(post) %></h3>
-  <% end %>
-</ul>
+    <ul class="individual-post">
+      <% @group.posts.each do |post| %>
+        <h3><%= link_to post.title, post_path(post) %></h3>
+      <% end %>
+    </ul>
+  </div>
+</div>
