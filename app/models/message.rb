@@ -7,6 +7,5 @@ class Message < ActiveRecord::Base
 
   def contact
     MessageConfirmation.content(self).deliver
-    true
   end
 end
