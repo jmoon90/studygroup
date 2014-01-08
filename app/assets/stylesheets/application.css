@@ -13,3 +13,21 @@
 
  *= require_tree .
  */
+* {
+  margin: 0;
+}
+.top-bar, .footer {
+  height: 30px;
+}
+html, body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+  height: 30px; /* .push must be the same height as .footer */
+}

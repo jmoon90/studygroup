@@ -932,6 +932,7 @@
 
 // Height and margin
 // $topbar-height: 45px;
+// $footer-height: 45px;
 // $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
@@ -988,6 +989,6 @@
 // $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%);
 
 // Sticky Class
-// $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+// $topbar-sticky-class: ".sticky";
 @import 'foundation';

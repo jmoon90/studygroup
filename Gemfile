@@ -36,6 +36,8 @@ gem 'gravatar_image_tag'
 
 gem 'carrierwave'
 
+gem 'simple_form'
+
 gem 'rmagick'
 
 group :development, :test do
@@ -47,6 +49,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'launchy'
+  gem 'email_spec'
 end
 
 group :test do

@@ -1,0 +1,10 @@
+<h1>Contact PairStudying</h1>
+
+<%= simple_form_for @message do |f| %>
+  <%= f.input :email %>
+  <%= f.input :subject %>
+  <%= f.input :description %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.button :submit %>
+<% end %>
