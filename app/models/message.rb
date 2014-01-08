@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :last_name
 
-  def contact
-    MessageConfirmation.content(self).deliver
+  def self.sender(message)
+    message.email
   end
 end
