@@ -1,32 +1,37 @@
-<%= link_to "Back to Group", group_path(@post.group) %>
-<div class="row">
-  <div class="large-10 columns"><h1><%= @post.title %></h1></div>
+<div class="row" style="text-align:right; margin-right:5px">
+  <%= link_to "Back to Group", group_path(@post.group) %>
 </div>
 <div class="row">
-  <div class="large-10 columns"><h2><%= @post.description %></h2></div>
+  <div class="large-10 columns has-tip"><h4><b><%= @post.title %></b></h4></div>
+</div>
+<div class="row">
+  <div class="large-10 columns"><%= @post.description %></div>
 </div>
 <br>
 
 <% if @post.comments == [] %>
   <p>No answers yet<p>
 <% else %>
-  <h3> Comments </h3>
+  <h4><%= pluralize("#{@post.comments.count}", 'Answer')%></h4>
 
   <% @post.comments.each do |comment| %>
-    <div class="row">
-      <div class="small-2 columns"><%= comment.user.email %></div>
-      <div class="small-10 columns"><%= comment.answer %></div>
-      <br>
+    <div class="row" style="margin: 20px 0">
+      <div class="small-7 columns"><%= comment.answer %></div>
+    </div>
+    <div class='row'>
+      <div class="small-1 columns"></div>
+      <div class="small-3 columns">
+        <%= comment.user.email %>
+      </div>
     </div>
   <% end %>
-      <br>
 <% end %>
 
 <%= form_for([@post, @comment]) do |f| %>
   <div class="row">
     <div class="large-12 columns">
-      <label><%= f.label :answer, "Your Answer" %></label>
       <div class='small-6 columns'>
+      <label><%= f.label :answer, "Your Answer" %></label>
         <%= f.text_field :answer %>
       </div>
     </div>

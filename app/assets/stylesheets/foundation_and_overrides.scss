@@ -30,14 +30,14 @@
 
 // $include-html-grid-classes: $include-html-classes;
 
-// $row-width: rem-calc(1000);
+ $row-width: rem-calc(1000);
 // $column-gutter: rem-calc(30);
 // $total-columns: 12;
 
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
- $body-font-family: "Comic San", "Helvetica", Helvetica, Arial, sans-serif;
+ $body-font-family: Arial, Liberation Sans, DejaVu Sans, sans-serif;
  $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -275,7 +275,7 @@
 // $dropdown-button-pip-color: #fff;
 // $dropdown-button-pip-color-alt: #333;
 
-// $button-pip-tny: rem-calc(6);
+//$button-pip-tny: rem-calc(3);
 // $button-pip-sml: rem-calc(7);
 // $button-pip-med: rem-calc(9);
 // $button-pip-lrg: rem-calc(11);

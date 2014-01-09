@@ -1,10 +1,27 @@
-<h1>Contact PairStudying</h1>
+<div class='row' style=>
+  <h3 style="text-align: center; margin-top:15px">Contact Us</h3>
+</div>
 
-<%= simple_form_for @message do |f| %>
-  <%= f.input :email %>
-  <%= f.input :subject %>
-  <%= f.input :description %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.button :submit %>
-<% end %>
+<div class='row' style="align:center;">
+  <div class="small-12 medium-6 medium-offset-3 columns">
+    <%= simple_form_for @message do |f| %>
+      <%= f.input :email %>
+      <%= f.input :subject %>
+      <%= f.input :description %>
+
+      <div class="row">
+        <div class='small-6 columns'>
+          <%= f.input :first_name %>
+        </div>
+        <div class='small-6 columns'>
+          <%= f.input :last_name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class='small-12 columns'>
+          <%= f.button :submit, class: "button expand" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -21,13 +21,13 @@ feature 'User with account' do
       fill_in 'Name', with: 'Pirates'
       fill_in 'Size', with: 12
       select "Ruby Monk", from: 'Tutorial'
-      click_on 'Create group'
+      click_on 'Create Group'
 
       page.should have_content('Created group successfully')
     end
 
     scenario 'invalid input' do
-      click_on 'Create group'
+      click_on 'Create Group'
 
       page.should have_content("can't be blank")
     end
@@ -36,7 +36,7 @@ feature 'User with account' do
       fill_in 'Name', with: 'Pirates'
       fill_in 'Size', with: 13
       select 'Ruby Monk', from: 'Tutorial'
-      click_on 'Create group'
+      click_on 'Create Group'
 
       page.should have_content('Size must be between 1 and 12')
     end
