@@ -8,30 +8,9 @@
   </ul>
 <% end %>
 
-<%= form_for(@group) do |f| %>
-  <div class='row'>
-    <div class="small-4 columns">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class="small-4 columns">
-      <%= f.label :size %>
-      <%= f.number_field :size %>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class="small-4 columns">
-      <%= f.label :tutorial_id %>
-      <%= f.collection_select :tutorial_id, Tutorial.all, :id, :name,
-                   { :include_blank => 'Please select' } %>
-    </div>
-  </div>
-
-  <div>
-    <%= f.submit 'Create group', class: 'Create group' %>
-  </div>
+<%= simple_form_for(@group) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :size %>
+  <%= f.input :tutorial_id, collection: Tutorial.all, prompt: 'Please select'%>
+  <%= f.button :submit, label: 'Create group' %>
 <% end %>

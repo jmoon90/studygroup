@@ -12,55 +12,63 @@
   </head>
 
   <body>
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to 'Pair Studying', groups_path %></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <% if user_signed_in? %>
-            <li class="active"><%= link_to 'My Group', mygroup_groups_path %></li>
-
-            <li class="has-dropdown">
-              <%= link_to 'Profile', edit_user_registration_path %>
-              <ul class="dropdown">
-                <li>
-                  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li class="has-dropdown">
-              <%= link_to "Sign In", new_user_session_path %>
-              <ul class="dropdown">
-                <li>
-                  <%= link_to "Sign Up", new_user_registration_path %>
-                </li>
-              </ul>
-            </li>
-          <% end %>
+    <div class='wrapper'>
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><%= link_to 'Pair Studying', groups_path %></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
 
-      </section>
-    </nav>
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <% if user_signed_in? %>
+              <li class="active"><%= link_to 'My Group', mygroup_groups_path %></li>
 
+              <li class="has-dropdown">
+                <%= link_to 'Profile', edit_user_registration_path %>
+                <ul class="dropdown">
+                  <li>
+                    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+            <% else %>
+              <li class="has-dropdown">
+                <%= link_to "Sign In", new_user_session_path %>
+                <ul class="dropdown">
+                  <li>
+                    <%= link_to "Sign Up", new_user_registration_path %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
 
-    <% flash.each do |name, msg| %>
-      <div data-alert class='alert-box', id='notice'>
-        <%= msg %>
+      <% flash.each do |name, msg| %>
+        <div data-alert class='alert-box'>
+          <%= msg %>
+        </div>
+      <% end %>
+
+      <div class='row'>
+        <div class='small-12 columns'>
+          <%= yield %>
+        </div>
       </div>
-    <% end %>
 
-    <div class='row'>
-      <div class='small-12 columns'>
-        <%= yield %>
-      </div>
+      <div class='push'></div>
     </div>
+      <ul class='inline-list' style="margin-left:10px;">
+        <li><%= link_to 'About'%></li>
+        <li><%= link_to 'Tips'%></li>
+        <li class="active"><%= link_to 'Contact', new_message_path %></li>
+      </ul>
 
     <%= javascript_include_tag "application" %>
-  </body> </html>
+  </body>
+</html>

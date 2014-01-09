@@ -19,4 +19,6 @@ Studygroup::Application.routes.draw do
       post ':id', to: 'posts#create', as: ''
     end
   end
+
+  resources :messages, only: [:create, :new]
 end

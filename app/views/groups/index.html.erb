@@ -1,29 +1,39 @@
 <h1> Groups </h1>
 
-<div><%= link_to "Create New Group", new_group_path %></div><br>
-<ul class="small-block-grid-2" id="groups">
-  <a href="#" data-dropdown="drop" class="tiny alert round button dropdown">Sort By</a><br>
+<div class='row'>
+  <div class="small-10 columns medium-10 columns">
+    <%= link_to "Create New Group", new_group_path %><br>
+  </div>
 
-  <ul id="drop" data-dropdown-content class="f-dropdown">
-    <li>
-      <%= form_tag(groups_path, method: :get) do %>
-        <%= hidden_field_tag 'sort', 'most_users' %>
-        <%= submit_tag "Most Users" %>
-      <% end %>
-    </li>
-    <li>
-      <%= form_tag(groups_path, method: :get) do %>
-        <%= hidden_field_tag 'sort', 'least_users' %>
-        <%= submit_tag "Least Users" %>
-      <% end %>
-    </li>
+  <div class="small-2 medium-2 columns">
+    <a data-dropdown="drop" class="tiny alert round button dropdown">Sort By</a><br>
+    <ul id="drop" data-dropdown-content class="f-dropdown">
+      <li>
+        <%= form_tag(groups_path, method: :get) do %>
+          <%= hidden_field_tag 'sort', 'most_users' %>
+          <%= submit_tag "Most Users" %>
+        <% end %>
+      </li>
+      <li>
+        <%= form_tag(groups_path, method: :get) do %>
+          <%= hidden_field_tag 'sort', 'least_users' %>
+          <%= submit_tag "Least Users" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row" style="margin-left:10px">
+  <div class='small-12 columns'>
+  <ul class="small-block-grid-2" id="groups">
+    <% @groups.each do |group| %>
+      <li class='groups'>
+        <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
+        <%= "#{group.users_in_group} / #{group.size}" %>
+        <%= link_to group.name, group_path(group), class: 'group_name' %>
+      </li>
+    <% end %>
   </ul>
-
-  <% @groups.each do |group| %>
-    <li class='groups'>
-      <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
-      <%= "#{group.users_in_group} / #{group.size}" %>
-      <%= link_to group.name, group_path(group), class: 'group_name' %>
-    </li>
-  <% end %>
-</ul>
+  </div>
+</div>
