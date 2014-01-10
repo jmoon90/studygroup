@@ -21,4 +21,6 @@ Studygroup::Application.routes.draw do
   end
 
   resources :messages, only: [:create, :new]
+
+  resources :home, only: [:index]
 end
