@@ -18,7 +18,7 @@
 }
 .top-bar, .footer {
   height: 30px;
-}
+};
 html, body {
   height: 100%;
 }
@@ -33,7 +33,7 @@ html, body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  .text-center  { text-align: center !important; }
+  .text-center  { text-align: center !important; };
 }
 
 .button.tiny {
@@ -47,5 +47,9 @@ html, body {
 #headerwrap {
   background-image: url('http://swishost.com/wp-content/uploads/2013/07/Little-Dog-Tongue-Wallpaper.jpg');
   margin-top: 15px;
+  text-align: center;
+}
+
+#center-ul {
   text-align: center;
 }
