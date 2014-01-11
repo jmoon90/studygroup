@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class='row' style='padding-left:15px'>
+<div class='row'>
   <% if @group.users.include?(current_user) %>
     <%= button_to 'Leave Group', group_membership_path(@group, current_user), method: :delete %>
   <% else %>
@@ -30,11 +30,10 @@
 
     <div class='small-10 columns'>
       <% if @group.users.include?(current_user) %>
-      <ul class="post-list">
-        <%= link_to "Create Post", new_posts_path(@group) %>
-      </ul>
+        <ul class="post-list">
+          <%= link_to "Create Post", new_posts_path(@group) %>
+        </ul>
       <% end %>
-
       <ul class="individual-post">
         <% @group.posts.each do |post| %>
           <h3><%= link_to post.title, post_path(post) %></h3>
