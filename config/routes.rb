@@ -23,4 +23,5 @@ Studygroup::Application.routes.draw do
 
   resources :home, only: [:index]
   resources :about, only: [:index]
+  resources :tips, only: [:index]
 end
