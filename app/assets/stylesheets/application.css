@@ -43,3 +43,9 @@ html, body {
 .tutorial-name {
   font-size: 18px;
 }
+
+#headerwrap {
+  background-image: url('http://swishost.com/wp-content/uploads/2013/07/Little-Dog-Tongue-Wallpaper.jpg');
+  margin-top: 15px;
+  text-align: center;
+}

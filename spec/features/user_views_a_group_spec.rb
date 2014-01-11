@@ -4,6 +4,7 @@ feature 'User views a group' do
   given(:user) { FactoryGirl.create(:user) }
   before :each do
     FactoryGirl.create(:group)
+    log_in_user(user)
     visit root_path
     first(:link, 'Hartl').click
   end
@@ -13,7 +14,6 @@ feature 'User views a group' do
   end
 
   scenario "User see's other users in group" do
-    log_in_user(user)
     click_on "Join Group"
     expect(page).to have_content(user.email)
   end

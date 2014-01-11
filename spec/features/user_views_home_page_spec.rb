@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'user visit home page' do
+feature 'signed in user visit home page' do
   given(:group) { FactoryGirl.create(:group, name: 'hartl') }
 
   context "they want to sort by least and most" do
@@ -13,6 +13,7 @@ feature 'user visit home page' do
       end
       FactoryGirl.create(:membership, group: group1)
 
+      log_in_user(group1.users.first)
       visit root_path
       end
 
@@ -36,6 +37,7 @@ feature 'user visit home page' do
     2.times do
       FactoryGirl.create(:membership, group: group)
     end
+    log_in_user(group.users.first)
     visit root_path
 
     expect(page).to have_content('2 / 12')

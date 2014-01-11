@@ -16,7 +16,11 @@
       <nav class="top-bar" data-topbar>
         <ul class="title-area">
           <li class="name">
-            <h1><%= link_to 'Pair Studying', groups_path %></h1>
+            <% if user_signed_in? %>
+              <h1><%= link_to 'Pair Studying', root_path %></h1>
+            <% else %>
+              <h1><%= link_to 'Pair Studying', home_index_path %></h1>
+            <% end %>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
@@ -25,6 +29,7 @@
           <!-- Right Nav Section -->
           <ul class="right">
             <% if user_signed_in? %>
+              <li class=""><%= link_to 'All Groups', root_path  %></li>
               <li class="active"><%= link_to 'My Group', mygroup_groups_path %></li>
 
               <li class="has-dropdown">

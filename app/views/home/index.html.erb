@@ -1,7 +1,28 @@
+<div id='headerwrap small-12 columns'>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h3>Learn _____</h3>
+      <h3>better, together</h3>
+    </div>
+  </div>
+</div>
+
 <div class='row'>
-  <div class='12-small columns'>
-    <a href="http://www.flickr.com/photos/12278984@N02/7635645124/in/photolist-cCJFgS-9JCik2-93ssfS-93rqrn-93ss5b-8xSWJP-93ux8J-93tRnr-cHCkuy-93uH1n-7VF7sa-7VJmsm-7VF5cV-7VF2S6-7VF3zp-7VF5VV-7VF1tg-7VJj45-d2Fc19-93tRzR-93pki8-deFmAx-iKfrj1-9JF35N-9JF58b-aUXBKg-9JF1ef-dprfXg-dprqCd-dprqtd-dprg4V-dprqvE-aUXAaH-9JF12E-9JF6QE-9JCga6-8cPVMG-aUXzVM-aUXzET-9JCgz2-9JF2DE-9JCek4-edmMTe-edsrMu-edmNqz-edmNGc-edsryd-9JCjAZ-9JF3TA-9JCiWV-aSAd2M">
-      <h3>Learn _________</h3>
-      <h3>better, together.</h3>
+  <div class='small-3 columns offset-6 columns'>
+    <%= simple_form_for('user', url: user_registration_path) do |f| %>
+      <%= f.input :email, label: false, placeholder: 'Your Email' %>
+      <%= f.input :password, label: false, placeholder: 'Password' %>
+      <%= f.input :password_confirmation , label: false, placeholder: 'Password Confirmation' %>
+
+      <%= f.submit 'Sign up' %>
+    <% end %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='small-10 columns small-offset-2 columns'>
+    <h3>Why Pair Studying</h3>
+    <p>Studying in groups helps students learn more effectively -<b>Washington University</b></p>
+    <p>Reseachers report that students learn best when they are actively involved in the process -<b>Berkeley University</b></p>
   </div>
 </div>

@@ -1,6 +1,5 @@
 Studygroup::Application.routes.draw do
-  root to: 'groups#index'
-
+  root to: 'home#index'
   devise_for :users
 
   resources :groups, only: [:index, :show, :new, :create] do
