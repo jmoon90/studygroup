@@ -13,6 +13,8 @@ feature 'Group member post' do
   scenario 'valid information' do
     fill_in "Title", with: 'Silly'
     fill_in "Description", with: 'Willy'
+    fill_in 'Tag', with: 'Ch 1'
+
     click_on "Post"
 
     expect(page).to have_content("Successfully posted to post")
@@ -30,15 +32,6 @@ feature 'Group member post' do
     click_on "Post"
 
     expect(page).to have_content("Successfully posted to post")
-  end
-
-  scenario 'valid information' do
-    fill_in "Title", with: 'Silly'
-    fill_in "Description", with: 'Willy'
-    click_on "Post"
-
-    visit group_path(membership.group)
-    expect(page).to have_content('Silly')
   end
 end
 

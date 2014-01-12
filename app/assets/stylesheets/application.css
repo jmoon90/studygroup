@@ -48,9 +48,10 @@ html, body {
 }
 
 #headerwrap {
-  background-image: url('http://swishost.com/wp-content/uploads/2013/07/Little-Dog-Tongue-Wallpaper.jpg');
+  background-image: url(../images/studygroup.jpg) no-repeat center top;
   margin-top: 15px;
-  text-align: center;
+  text-align: right;
+  height: 400px;
 }
 
 #form-styling {
