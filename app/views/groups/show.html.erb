@@ -35,7 +35,7 @@
         </ul>
       <% end %>
       <ul class="individual-post">
-        <% @group.posts.each do |post| %>
+        <% @posts.each do |post| %>
           <h3><%= link_to post.title, post_path(post) %></h3>
         <% end %>
       </ul>
