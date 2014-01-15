@@ -12,8 +12,6 @@ Studygroup::Application.routes.draw do
 
   resources :tutorials, only: [:new, :create]
 
-  resources :posts, only: [:show] do
-    resources :comments, only: [:create]
   resources :posts, only: [:show], has_many: :tags do
     resources :taggings, only: [:create]
     resources :comments, only: [:create], has_many: :tags
