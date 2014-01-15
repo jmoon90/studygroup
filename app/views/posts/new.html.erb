@@ -1,17 +1,15 @@
-<h1>New Posts </h1>
+<div class='row' style=>
+  <h3 style="text-align: center; margin-top:15px">New Posts</h3>
+</div>
 
-<%= form_for(@post) do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<div class='row' style="align:center;">
+  <div class="small-12 medium-6 columns">
+    <%= simple_form_for(@post) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :tag_list %>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div>
-    <%= f.submit 'Post' %>
-  </div>
-<% end %>
+        <%= f.submit 'Post' %>
+    <% end %>
+    </div>
+</div>

@@ -30,6 +30,13 @@ feature 'user visit post' do
     expect(page).to have_content('No answers yet')
   end
 
+  scenario 'views tag for post' do
+    post = FactoryGirl.create(:post)
+    FactoryGirl.create(:tagging, taggable_id: post.id, taggable_type: 'Post')
+    visit post_path(post)
+    expect(page).to have_content(post.tags.first.name)
+  end
+
   scenario 'views page with comments' do
     visit post_path(comment.post)
     expect(page).to_not have_content('No answers yet')

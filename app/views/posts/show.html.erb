@@ -2,15 +2,28 @@
   <%= link_to "Back to Group", group_path(@post.group) %>
 </div>
 <div class="row">
-  <div class="small-8 small-offset-1 columns has-tip"><h4><b><%= @post.title %></b></h4></div>
+  <div class="small-10 small-offset-1 columns"><h1 class='fancy-title'><%= @post.title %></h1></div>
 </div>
+
 <div class="row">
-  <div class="small-8 small-offset-1 columns"><%= @post.description %></div>
+  <div class="small-8 small-offset-1 columns">
+    <%= @post.description %>
+  </div>
+  <div class="small-2 small-offset-1 columns">
+    tagged
+    <div class = 'row' id='tagged'>
+      <div class='small-2 columns'>
+      <% @post.tags.each do |tag| %>
+          <button class='button tiny' id='tny-margins'><%= tag.name %></button>
+              <% end%>
+      </div>
+    </div>
+  </div>
 </div>
 <br>
 
 <div class='row'>
-  <div class='small-8 small-offset-1 columns'>
+  <div class='small-9 small-offset-1 columns'>
     <% if @post.comments == [] %>
       <p>No answers yet<p>
     <% else %>
@@ -30,7 +43,7 @@
 
 <%= form_for([@post, @comment]) do |f| %>
   <div class="row" >
-    <div class='small-8 small-offset-1 columns' id='form-styling'>
+    <div class='small-9 columns' id='form-styling'>
       <%= f.label :answer, "Your Answer" %>
       <%= f.text_field :answer %>
       <div class="actions">

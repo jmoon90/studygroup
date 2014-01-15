@@ -8,37 +8,44 @@
 </div>
 
 <div class='row'>
-  <% if @group.users.include?(current_user) %>
-    <%= button_to 'Leave Group', group_membership_path(@group, current_user), method: :delete %>
-  <% else %>
-    <% if @group.users.count >= @group.size %>
-      <%= '| Full Group' %>
+  <div class='small-12 columns'>
+    <% if @group.users.include?(current_user) %>
+      <%= button_to 'Leave Group', group_membership_path(@group, current_user), method: :delete %>
     <% else %>
-      <%= button_to "Join Group", group_memberships_path(@group), method: :post %>
-    <% end %>
-  <% end %>
-
-  <div class='row'>
-    <div class='small-1 columns side'>
-      <ul class="side-nav group-member-list">
-        <% @group.users.each do |user| %>
-          <%= gravatar_for user %>
-          <li><%= user.email %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class='small-10 columns'>
-      <% if @group.users.include?(current_user) %>
-        <ul class="post-list">
-          <%= link_to "Create Post", new_posts_path(@group) %>
-        </ul>
+      <% if @group.users.count >= @group.size %>
+        <%= '| Full Group' %>
+      <% else %>
+        <%= button_to "Join Group", group_memberships_path(@group), method: :post %>
       <% end %>
-      <ul class="individual-post">
-        <% @posts.each do |post| %>
-          <h3><%= link_to post.title, post_path(post) %></h3>
-        <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='small-2 columns side'>
+    <ul class="side-nav group-member-list">
+      <% @group.users.each do |user| %>
+        <%= gravatar_for user %>
+        <li><%= user.email %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class='small-10 columns'>
+    <% if @group.users.include?(current_user) %>
+      <ul class="post-list">
+        <%= link_to "Create Post", new_posts_path(@group) %>
       </ul>
+    <% end %>
+
+    <ul class="individual-post">
+      <% @posts.each do |post| %>
+        <h3><%= link_to post.title, post_path(post) %></h3>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
     </div>
   </div>
 </div>
