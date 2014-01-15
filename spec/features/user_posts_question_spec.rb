@@ -31,7 +31,7 @@ feature 'Group member post' do
   scenario 'view submitted post in the group' do
     fill_in "Title", with: 'Silly'
     fill_in "Description", with: 'Willy'
-    fill_in 'Tags', with: 'Ch 1'
+    fill_in 'Tag list', with: 'Ch 1'
 
     click_on 'Post'
 
