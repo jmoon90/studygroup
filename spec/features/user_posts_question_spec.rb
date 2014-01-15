@@ -10,17 +10,19 @@ feature 'Group member post' do
     click_on 'Create Post'
   end
 
-  scenario 'valid information' do
+  scenario 'with valid information' do
     fill_in "Title", with: 'Silly'
     fill_in "Description", with: 'Willy'
-    fill_in 'Tag', with: 'Ch 1'
+    fill_in 'Tags', with: 'Ch 1'
 
     click_on "Post"
 
     expect(page).to have_content("Successfully posted to post")
+    expect(Tagging.last.taggable_type).to have_content('Post')
+    expect(Post.last.tags).not_to be_empty
   end
 
-  scenario 'invalid information' do
+  scenario 'with invalid information' do
     click_on "Post"
 
     expect(page).to have_content("There was an error. Please try again.")
@@ -29,9 +31,13 @@ feature 'Group member post' do
   scenario 'view submitted post in the group' do
     fill_in "Title", with: 'Silly'
     fill_in "Description", with: 'Willy'
-    click_on "Post"
+    fill_in 'Tags', with: 'Ch 1'
+
+    click_on 'Post'
+
 
     expect(page).to have_content("Successfully posted to post")
+    expect(page).to have_content('Silly')
   end
 end
 
