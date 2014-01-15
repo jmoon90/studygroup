@@ -6,5 +6,7 @@ describe User do
   it { should have_many(:memberships).dependent(:destroy) }
   it { should have_many(:posts).dependent(:nullify) }
   it { should have_many(:comments).dependent(:nullify) }
+  it { should have_many(:votes).dependent(:destroy) }
+  it { should have_many(:learnings).dependent(:destroy) }
 end
 
