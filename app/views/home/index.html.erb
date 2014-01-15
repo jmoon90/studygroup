@@ -1,28 +1,42 @@
-<div id='headerwrap' class='small-12 columns'>
-  <div class='row'>
-    <div class='small-12 columns'>
-      <h3>Learn _____</h3>
-      <h3>better, together</h3>
+<%= content_for :header do %>
+  <div id='headerwrap' class='small-12 medium-12 columns'>
+    <div class='row'>
+      <div class='small-4 small-offset-8 columns' id='homepage-intro'>
+        <h2 class='tagline'><b>Learn _____</b></h2>
+        <h2 class='tagline'><b>better, together</b></h2>
+        <br>
+        <br>
+      </div>
+      <div class='row'>
+        <div class='small-12  medium-offset-8 columns'>
+          <div class='row'>
+            <div class='small-12 medium-3 columns'>
+              <%= simple_form_for('user', url: user_registration_path) do |f| %>
+                <div id='signup-margin'>
+                  <%= f.input :email, label: false, placeholder: 'Your Email' %>
+                </div>
+                <div id='signup-margin'>
+                  <%= f.input :password, label: false, placeholder: 'Password' %>
+                </div>
+                <div id='signup-margin'>
+                  <%= f.input :password_confirmation , label: false, placeholder: 'Password Confirmation' %>
+                </div>
+                <div>
+                  <%= f.button :submit, "Sign Up for Pair Studying", class: "button expand" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class='row'>
-  <div class='small-3 columns offset-6 columns'>
-    <%= simple_form_for('user', url: user_registration_path) do |f| %>
-      <%= f.input :email, label: false, placeholder: 'Your Email' %>
-      <%= f.input :password, label: false, placeholder: 'Password' %>
-      <%= f.input :password_confirmation , label: false, placeholder: 'Password Confirmation' %>
-
-      <%= f.submit 'Sign up' %>
-    <% end %>
+  <div class='row'>
+    <div class='small-10 columns small-offset-2 columns'>
+      <h3 id='homepage-intro'>Why Study Together?</h3>
+      <p>Studying in groups helps students learn more effectively -<b> Washington University</b></p>
+      <p>Reseachers report that students learn best when they are actively involved in the process -<b> Berkeley University</b></p>
+    </div>
   </div>
-</div>
-
-<div class='row'>
-  <div class='small-10 columns small-offset-2 columns'>
-    <h3>Why Pair Studying</h3>
-    <p>Studying in groups helps students learn more effectively -<b>Washington University</b></p>
-    <p>Reseachers report that students learn best when they are actively involved in the process -<b>Berkeley University</b></p>
-  </div>
-</div>
+<% end %>

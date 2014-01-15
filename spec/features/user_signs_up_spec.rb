@@ -7,14 +7,14 @@ feature 'Sign up' do
       fill_in 'Your Email', with: 'jayleno@aol.com'
       fill_in 'Password', with: 'applepie'
       fill_in 'Password Confirmation', with: 'applepie'
-      click_button 'Sign up'
+      click_button 'Sign Up for Pair Studying'
 
       expect(page).to have_content('signed up successfully')
     end
 
     scenario 'with invalid information' do
       visit home_index_path
-      click_button 'Sign up'
+      click_button 'Sign Up for Pair Studying'
 
       expect(page).to have_content('error')
     end
