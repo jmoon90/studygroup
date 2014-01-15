@@ -1,0 +1,69 @@
+/*
+ *= require_self
+*/
+
+@import "foundation_and_overrides";
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.footer, .push {
+  height: 30px; /* .push must be the same height as .footer */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  .text-center  { text-align: center !important; };
+}
+
+.button.tiny {
+  padding: 1 2rem !important;
+}
+
+.tutorial-name {
+  font-size: 18px;
+}
+
+#headerwrap {
+  background-image: url('studygroup.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  text-align: right;
+  height: 500px;
+}
+
+#form-styling {
+  margin-top: 30px;
+}
+
+#tny-margins {
+  padding: .3rem .4rem;
+  margin: 2px 2px 2px 0;
+}
+
+#tagged {
+  margin-top: 10px;
+}
+
+#signup-margin {
+  margin: 0 0 -12px 0;
+}
+#homepage-intro {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.tagline {
+  color: $secondary-color;
+}
+
+.fancy-title {
+  border-bottom:thick dotted;
+}
