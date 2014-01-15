@@ -1,0 +1,13 @@
+<%= simple_form_for('user', url: new_user_session_path) do |f| %>
+  <div id='sign_in'>
+    <%= f.input :email, label: false, placeholder: 'Your Email' %>
+  </div>
+
+  <div id='sign_in'>
+    <%= f.input :password, label: false, placeholder: 'Password' %>
+  </div>
+
+  <div>
+    <%= f.button :submit, "Sign In", class: "button expand" %>
+  </div>
+<% end %>

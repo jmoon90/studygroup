@@ -1,0 +1,20 @@
+<div class='row' style=>
+  <div class="small-12 medium-6 medium-offset-2 columns">
+    <h3 style="text-align: center; margin-top:15px">Today I Learned</h3>
+  </div>
+</div>
+
+<div class='row' style="align:center;">
+  <div class="small-9 medium-6 medium-offset-2 columns">
+    <%= simple_form_for(@learning) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :url, label: 'url' %>
+
+      <%= f.submit 'submit' %>
+    <% end %>
+    </div>
+    <div class='small-3 columns'>
+      <ul><li>Rule</li></ul>
+    </div>
+</div>

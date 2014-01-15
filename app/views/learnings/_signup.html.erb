@@ -1,0 +1,17 @@
+<%= simple_form_for('user', url: user_registration_path) do |f| %>
+  <div id='signup-margin'>
+    <%= f.input :email, label: false, placeholder: 'Your Email' %>
+  </div>
+
+  <div id='signup-margin'>
+    <%= f.input :password, label: false, placeholder: 'Password' %>
+  </div>
+
+  <div id='signup-margin'>
+    <%= f.input :password_confirmation , label: false, placeholder: 'Password Confirmation' %>
+  </div>
+
+  <div>
+    <%= f.button :submit, "Sign Up for Pair Studying", class: "button expand" %>
+  </div>
+<% end %>
