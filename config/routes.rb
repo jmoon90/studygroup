@@ -22,6 +22,9 @@ Studygroup::Application.routes.draw do
   end
 
   resources :messages, only: [:create, :new]
+  resources :learnings, only: [:index, :new, :create, :edit, :update] do
+    resources :votes, only: [:create, :destroy]
+  end
 
 
   resources :home, only: [:index]

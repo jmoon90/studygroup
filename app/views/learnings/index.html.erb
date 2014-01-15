@@ -1,0 +1,46 @@
+<div class='row'>
+  <div class='small-12 small-offset-3 columns'>
+    <h1>TIL</h1>
+  </div>
+</div>
+<div class='row'>
+  <div class="small-10 columns medium-10 columns">
+    <%= link_to "Submit a new learning", new_learning_path %><br>
+  </div>
+</div>
+
+
+<div class='row'>
+  <div class='small-12 columns'>
+    <% @learnings.each do |learning| %>
+      <div><%= learning.votes_count %></div>
+      <% if user_signed_in? %>
+        <% if learning.has_vote_from?(current_user) %>
+          <%= button_to 'unlike', learning_vote_path(learning, learning.vote_from(current_user)), method: :delete %>
+        <% else %>
+          <%= button_to 'like', learning_votes_path(learning) %>
+        <% end %>
+      <% else %>
+        <a href='#' data-reveal-id='myModal' class='tiny radius button'>like</a>
+      <% end %>
+      <%= link_to learning.title, learning_path(learning) %>
+    <% end %>
+  </div>
+</div>
+
+<div id="myModal" class="reveal-modal" data-reveal>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <p>you'll need to login or register to do that</p>
+      <div class='row'>
+        <div class='small-6 columns'>
+          <%= render 'learnings/signin' %>
+        </div>
+        <div class='small-6 columns'>
+          <%= render 'learnings/signup' %>
+        </div>
+      </div>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+  </div>
+</div>
