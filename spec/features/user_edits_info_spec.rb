@@ -39,4 +39,3 @@ feature 'Edit personal information' do
   end
 end
 
-

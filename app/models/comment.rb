@@ -6,4 +6,10 @@ class Comment < ActiveRecord::Base
     inverse_of: :comments
   belongs_to :user,
     inverse_of: :comments
+  has_many :taggings,
+    as: :taggable,
+    dependent: :destroy
+  has_many :tags,
+    through: :taggings,
+    inverse_of: :comments
 end
