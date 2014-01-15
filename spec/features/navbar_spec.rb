@@ -19,13 +19,13 @@ end
       visit new_user_session_path
       click_on "Pair Studying"
 
-      expect(page).to have_content('Why Pair Studying')
+      expect(page).to have_content('Why Study Together?')
     end
 
     scenario 'not signed in' do
       visit root_path
 
-      expect(page).to have_content('Why Pair Studying')
+      expect(page).to have_content('Why Study Together?')
     end
   end
 end
