@@ -18,10 +18,8 @@ class Post < ActiveRecord::Base
     inverse_of: :posts
 
   def tag_list=(tag_list)
-    tag_list.split(',').each do |tag_name|
-      tag_name.strip!
-      tag = Tag.find_or_initialize_by(name: tag_name)
-      self.tags << tag
+    self.tags = tag_list.split(',').map do |n|
+      Tag.where(name: n.strip).first_or_create!
     end
   end
 
