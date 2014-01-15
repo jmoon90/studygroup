@@ -6,7 +6,7 @@ Studygroup::Application.routes.draw do
     collection do
       get 'mygroup'
     end
-    resources :post, only: [:index]
+    resources :posts, only: [:index]
     resources :memberships, only: [:create, :destroy]
   end
 
@@ -21,7 +21,8 @@ Studygroup::Application.routes.draw do
     end
   end
 
-  resources :messages, only: [:create, :new]
+  resources :messages, only: [:new,:create]
+
   resources :learnings, only: [:index, :new, :create, :edit, :update] do
     resources :votes, only: [:create, :destroy]
   end
