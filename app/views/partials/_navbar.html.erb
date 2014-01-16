@@ -1,0 +1,39 @@
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+    <% if user_signed_in? %>
+      <h1><%= link_to 'Pair Studying', root_path %></h1>
+  <% else %>
+      <h1><%= link_to 'Pair Studying', home_index_path %></h1>
+  <% end %>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class=""><%= link_to 'TIL', learnings_path  %></li>
+      <li class=""><%= link_to 'All Groups', groups_path  %></li>
+      <% if user_signed_in? %>
+        <li class="active"><%= link_to 'My Group', mygroup_groups_path %></li>
+      <li class="has-dropdown">
+      <%= link_to 'Profile', edit_user_registration_path %>
+      <ul class="dropdown">
+        <li>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+      </li>
+    <% else %>
+        <li class="has-dropdown">
+      <%= link_to "Sign In", new_user_session_path %>
+      <ul class="dropdown">
+        <li>
+        <%= link_to "Sign Up", new_user_registration_path %>
+        </li>
+      </ul>
+      </li>
+    <% end %>
+    </ul>
+  </section>
+</nav>
