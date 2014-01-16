@@ -13,45 +13,7 @@
 
   <body>
     <div class='wrapper'>
-      <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-          <li class="name">
-            <% if user_signed_in? %>
-              <h1><%= link_to 'Pair Studying', root_path %></h1>
-            <% else %>
-              <h1><%= link_to 'Pair Studying', home_index_path %></h1>
-            <% end %>
-          </li>
-        </ul>
-
-        <section class="top-bar-section">
-          <!-- Right Nav Section -->
-          <ul class="right">
-              <li class=""><%= link_to 'TIL', learnings_path  %></li>
-              <li class=""><%= link_to 'All Groups', groups_path  %></li>
-            <% if user_signed_in? %>
-              <li class="active"><%= link_to 'My Group', mygroup_groups_path %></li>
-              <li class="has-dropdown">
-                <%= link_to 'Profile', edit_user_registration_path %>
-                <ul class="dropdown">
-                  <li>
-                    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-                  </li>
-                </ul>
-              </li>
-            <% else %>
-              <li class="has-dropdown">
-                <%= link_to "Sign In", new_user_session_path %>
-                <ul class="dropdown">
-                  <li>
-                    <%= link_to "Sign Up", new_user_registration_path %>
-                  </li>
-                </ul>
-              </li>
-            <% end %>
-          </ul>
-        </section>
-      </nav>
+      <%= render 'partials/navbar' %>
 
       <% flash.each do |name, msg| %>
         <div data-alert class='alert-box'>
@@ -59,20 +21,17 @@
         </div>
       <% end %>
 
-        <%= yield :header %>
+      <%= yield :header %>
+
       <div class='row'>
         <div class='small-12 columns'>
           <%= yield %>
         </div>
       </div>
-
-      <div class='push'></div>
     </div>
-      <ul class='inline-list' style="margin-left:10px;">
-        <li><%= link_to 'About', about_index_path %></li>
-        <li><%= link_to 'Tips', tips_path %></li>
-        <li class="active"><%= link_to 'Contact', new_message_path %></li>
-      </ul>
+
+    <div class='push'></div>
+    <%= render 'partials/footer' %>
 
     <%= javascript_include_tag "application" %>
   </body>
