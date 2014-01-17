@@ -5,7 +5,7 @@ feature 'user votes' do
     scenario 'clicks vote button' do
       FactoryGirl.create(:learning)
       visit learnings_path
-      click_on 'like'
+      first(:link, 'like').click
 
       expect(page).to have_content("you'll need to login or register to do that")
     end
