@@ -16,7 +16,7 @@ feature 'Sign up' do
       visit home_index_path
       click_button 'Sign Up for Pair Studying'
 
-      expect(page).to have_content('error')
+      expect(page).to have_content('Please review the problems below')
     end
   end
 
@@ -28,18 +28,18 @@ feature 'Sign up' do
     scenario 'with valid information' do
       within('form#new_user') do
         fill_in 'Email', with: 'jayleno@aol.com'
-        fill_in 'Password', with: 'applepie'
+        find('#user_password').set('applepie')
         fill_in 'Password confirmation', with: 'applepie'
         click_button 'Sign up'
       end
 
-      expect(page).to have_content('signed up successfully')
+      expect(page).to have_content('Welcome! You have signed up')
     end
 
     scenario 'with invalid information' do
       click_button 'Sign up'
 
-      expect(page).to have_content('error')
+      expect(page).to have_content('Please review the problems below')
     end
   end
 end

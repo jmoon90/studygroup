@@ -29,12 +29,12 @@ feature 'Edit personal information' do
     scenario 'incorrect current password' do
       update_button
 
-      expect(page).to have_content("Current password can't be blank")
+      expect(page).to have_content("Please review the problems below")
     end
   end
 
   scenario 'cancel account' do
-    click_button 'Cancel my account'
+    click_on 'Cancel my account'
     expect(page).to have_content('Bye!')
   end
 end
