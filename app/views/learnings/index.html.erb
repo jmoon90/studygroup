@@ -20,27 +20,31 @@
       <%= hidden_field_tag 'sort', 'rank' %>
       <%= submit_tag 'Rank' %>
     <% end %>
-    <% @learnings.each do |learning| %>
-      <div><%= learning.votes_count %></div>
-      <div class='row'>
-        <div class='small-12 columns'>
-          <div class='small-1 columns'>
-            <% if user_signed_in? %>
-              <% if learning.has_vote_from?(current_user) %>
-                <%= button_to 'unlike', learning_vote_path(learning, learning.vote_from(current_user)), method: :delete %>
+    <ol>
+      <% @learnings.each do |learning| %>
+          <div><%= learning.votes_count %></div>
+        <div class='row'>
+          <div class='small-12 columns'>
+            <div class='small-1 columns'>
+              <% if user_signed_in? %>
+                <% if learning.has_vote_from?(current_user) %>
+                  <%= button_to 'unlike', learning_vote_path(learning, learning.vote_from(current_user)), method: :delete %>
+                <% else %>
+                  <%= button_to 'like', learning_votes_path(learning) %>
+                <% end %>
               <% else %>
-                <%= button_to 'like', learning_votes_path(learning) %>
+                <a href='#' data-reveal-id='myModal' class='tiny radius button'>like</a>
               <% end %>
-            <% else %>
-              <a href='#' data-reveal-id='myModal' class='tiny radius button'>like</a>
-            <% end %>
-          </div>
-          <div class='small-11 columns'>
-            <%= link_to learning.title, learning_path(learning) %>
+            </div>
+            <div class='small-11 columns'>
+              <li>
+                <%= link_to learning.title, learning_path(learning) %>
+              </li>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </ol>
   </div>
 </div>
 
