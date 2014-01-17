@@ -2,7 +2,7 @@ class LearningsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
   def index
-    @learnings = Learning.all
+    @learnings = Learning.filter_by(params[:sort])
   end
 
   def new
@@ -14,7 +14,7 @@ class LearningsController < ApplicationController
 
     if @learning.save
       flash[:notice] ='Yay learning is fun!'
-      redirect_to new_learning_path
+      redirect_to learnings_path
     else
       flash[:notice] ='Invalid input. Please try again'
       render :new
@@ -41,6 +41,6 @@ class LearningsController < ApplicationController
   private
 
   def learning_params
-    params.require(:learning).permit(:title, :description, :url)
+    params.require(:learning).permit(:title, :description, :url, :rank)
   end
 end
