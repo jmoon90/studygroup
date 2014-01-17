@@ -12,5 +12,13 @@ describe Learning do
       FactoryGirl.create(:vote, user: user, learning: learning)
       expect(learning.has_vote_from?(user)).to be_true
     end
+
+    it 'should rank based on  posted time and amount of likes' do
+      second = FactoryGirl.create(:learning)
+      third = FactoryGirl.create(:learning, rank: 1)
+      first = FactoryGirl.create(:learning, rank: 5)
+
+      expect(Learning.order(rank: :desc)).to eq([first, second, third])
+    end
   end
 end
