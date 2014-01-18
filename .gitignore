@@ -19,3 +19,5 @@ Ignore simplecov output
 /coverage/
 =======
 /.env
+
+/.secret
