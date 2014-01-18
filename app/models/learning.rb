@@ -14,13 +14,17 @@ class Learning < ActiveRecord::Base
     votes.find_by(user_id: user.id)
   end
 
-  def self.highest_rank
+  def self.highest_rank(user)
     Learning.order(rank: :desc)
   end
 
-  def self.filter_by(object)
+  def self.my_learning(user)
+    Learning.where(user_id: user).order(:created_at)
+  end
+
+  def self.filter_by(object, user)
     object = 'highest_rank' if object.nil?
-    send(object)
+    send(object, user)
   end
 
   def self.rank_learning(learning, like)
