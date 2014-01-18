@@ -8,8 +8,6 @@ gem 'pg'
 
 gem 'rails_12factor', group: :production
 
-gem 'acts_as_votable', '~> 0.8.0'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -38,7 +36,7 @@ gem 'compass'
 
 gem 'gravatar_image_tag'
 
-gem 'carrierwave'
+gem 'carrierwave-aws'
 
 gem 'simple_form'
 
