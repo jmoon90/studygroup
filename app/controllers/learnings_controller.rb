@@ -5,6 +5,10 @@ class LearningsController < ApplicationController
     @learnings = Learning.filter_by(params[:sort])
   end
 
+  def show
+    @learning = Learning.find(params[:id])
+  end
+
   def new
     @learning = Learning.new
   end

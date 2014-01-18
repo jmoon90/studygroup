@@ -1,0 +1,15 @@
+<div class="row" style="text-align:right; margin-right:5px">
+  <%= link_to "Back to TIL", learnings_path %>
+</div>
+
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <h1 class='fancy-title'><%= link_to  @learning.title, @learning.url %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <%= @learning.description %>
+  </div>
+</div>

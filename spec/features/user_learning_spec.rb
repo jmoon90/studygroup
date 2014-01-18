@@ -44,4 +44,13 @@ feature 'user view today I learned' do
       expect(page).to have_content('Yay keep on learning!')
     end
   end
+
+  context 'clicks on specific learning' do
+    scenario "see's detail of learning" do
+      learning = FactoryGirl.create(:learning)
+      visit learning_path(learning)
+
+      expect(page).to have_content learning.description
+    end
+  end
 end
