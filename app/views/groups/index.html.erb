@@ -10,8 +10,8 @@
   </div>
 
   <div class="small-2 medium-2 columns">
-    <a data-dropdown="drop" class="tiny alert round button dropdown">Sort By</a><br>
-    <ul id="drop" data-dropdown-content class="f-dropdown">
+    <a data-dropdown="hover1" data-options='is_hover:true' class="tiny alert round button dropdown">Sort By</a><br>
+    <ul id="hover1" class="f-dropdown" data-dropdown-content>
       <li>
         <%= form_tag(groups_path, method: :get) do %>
           <%= hidden_field_tag 'sort', 'most_users' %>

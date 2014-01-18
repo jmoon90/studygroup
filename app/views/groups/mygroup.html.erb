@@ -1,12 +1,18 @@
 <% provide(:title, "My Page") %>
 
-<h1><%= current_user.email %> Group</h1>
-<%= gravatar_for current_user %>
+<div class="row">
+  <div class='12-small columns'>
+    <h1><%= current_user.email %> Group</h1>
+    <%= gravatar_for current_user%>
+  </div>
+</div>
 
 <div class="row">
+  <div class='12-small columns'>
   <ul class="small-block-grid-3">
     <% @memberships.each do |membership| %>
-      <li><%= link_to membership.group.name, group_path(membership.group_id) %></li>
+      <li><%= link_to membership.group.name, group_path(membership.group_id), class:"margin_top" %></li>
     <% end %>
   </ul>
+  </div>
 </div>
