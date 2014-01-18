@@ -15,9 +15,7 @@
 /log/*.log
 /tmp
 
-.config.database.yml
-.env
-
-
 Ignore simplecov output
 /coverage/
+=======
+/.env
