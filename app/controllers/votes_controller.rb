@@ -4,9 +4,8 @@ class VotesController < ApplicationController
     vote = current_user.votes.build()
     vote.learning = learning
 
-
     if vote.save
-      Learning.rank_learning(learning, learning.votes_count)
+      HardWorker.perform_async(learn.id)
       redirect_to :back
     else
       redirect_to :back
@@ -15,9 +14,9 @@ class VotesController < ApplicationController
 
   def destroy
     current_user.votes.destroy(params[:id])
+    learning = params[:learning_id]
 
-    learning = Learning.find(params[:learning_id])
-    Learning.rank_learning(learning, learning.votes_count)
+    HardWorker.perform_async(learning)
     redirect_to :back
   end
 end
