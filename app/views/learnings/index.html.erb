@@ -1,48 +1,49 @@
 <div class='row'>
   <div class='small-12 medium-6 columns'>
-    <h1>TIL</h1>
+    <h1>Today I Learned (TIL)</h1>
   </div>
 </div>
+
 <div class='row'>
-  <div class="small-10 columns medium-10 columns">
+  <div class="small-10 columns medium-6 columns">
     <%= link_to "Submit a new learning", new_learning_path %><br>
   </div>
+
+  <div class='small-2 medium-2 columns'>
+    <div class='bottom-margin'>
+      <%= form_tag(learnings_path, method: :get) do %>
+        <%= hidden_field_tag 'sort', 'my_learning' %>
+        <%= submit_tag 'My Learnings', class:'button tiny radius round', id:'drop' %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
 <div class='row'>
-  <div class='small-12 columns'>
-    <%= form_tag(learnings_path, method: :get) do %>
-      <%= hidden_field_tag 'sort', 'my_learning' %>
-      <%= submit_tag 'My Learnings' %>
-    <% end %>
-    <%= form_tag(learnings_path, method: :get) do %>
-      <%= hidden_field_tag 'sort', 'rank' %>
-      <%= submit_tag 'Rank' %>
-    <% end %>
+</div>
     <ol>
       <% @learnings.each do |learning| %>
-          <div><%= learning.votes_count %></div>
-        <div class='row'>
-          <div class='small-12 columns'>
-            <div class='small-1 columns'>
-              <% if user_signed_in? %>
-                <% if learning.has_vote_from?(current_user) %>
-                  <%= button_to 'unlike', learning_vote_path(learning, learning.vote_from(current_user)), method: :delete %>
-                <% else %>
-                  <%= button_to 'like', learning_votes_path(learning) %>
-                <% end %>
+      <div class='row'>
+
+        <div class='small-2 columns'>
+          <li class='make_inline'>
+            <% if user_signed_in? %>
+              <% if learning.has_vote_from?(current_user) %>
+                 <%= button_to "#{learning.votes_count} unlike", learning_vote_path(learning, learning.vote_from(current_user)), method: :delete, class:"button tiny primary" %>
               <% else %>
-                <a href='#' data-reveal-id='myModal' class='tiny radius button'>like</a>
+                <%= button_to "#{learning.votes_count} like", learning_votes_path(learning), class:"button tiny primary" %>
               <% end %>
-            </div>
-            <div class='small-11 columns'>
-              <li>
-                <%= link_to learning.title, learning_path(learning) %>
-              </li>
-            </div>
-          </div>
+            <% else %>
+            <%= link_to "#{learning.votes_count} like","#", "data-reveal-id" => 'myModal', class:"button tiny primary" %>
+            <% end %>
+          </li>
         </div>
+
+        <div class='small-10 columns'>
+            <%= link_to learning.title, learning_path(learning), class:'voting_margins' %>
+        </div>
+      </div>
       <% end %>
     </ol>
   </div>
