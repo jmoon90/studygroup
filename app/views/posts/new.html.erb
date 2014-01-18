@@ -1,15 +1,21 @@
 <div class='row' style=>
-  <h3 style="text-align: center; margin-top:15px">New Posts</h3>
+  <div class="small-12 medium-6 medium-centered columns">
+    <h3>New Posts</h3>
+  </div>
 </div>
 
-<div class='row' style="align:center;">
-  <div class="small-12 medium-6 columns">
+<div class='row'>
+  <div class="small-12 medium-6 medium-centered columns">
     <%= simple_form_for(@post) do |f| %>
         <%= f.input :title %>
-        <%= f.input :description %>
+        <%= f.input :description, as: :text %>
         <%= f.input :tag_list %>
 
-        <%= f.submit 'Post' %>
+      <div class="row">
+        <div class='small-12 columns'>
+          <%= f.submit 'Post', class: "button expand" %>
+        </div>
+      </div>
     <% end %>
     </div>
 </div>

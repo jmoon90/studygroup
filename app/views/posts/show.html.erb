@@ -1,21 +1,24 @@
 <div class="row" style="text-align:right; margin-right:5px">
   <%= link_to "Back to Group", group_path(@post.group) %>
 </div>
+
 <div class="row">
-  <div class="small-10 small-offset-1 columns"><h1 class='fancy-title'><%= @post.title %></h1></div>
+  <div class="small-10 small-centered columns">
+    <h1 class='fancy-title'><%= @post.title %></h1>
+  </div>
 </div>
 
 <div class="row">
-  <div class="small-8 small-offset-1 columns">
+  <div class="small-10 small-centered columns">
     <%= @post.description %>
   </div>
-  <div class="small-2 small-offset-1 columns">
+  <div class="small-2 columns">
     tagged
     <div class = 'row' id='tagged'>
       <div class='small-2 columns'>
-      <% @post.tags.each do |tag| %>
+        <% @post.tags.each do |tag| %>
           <button class='button tiny' id='tny-margins'><%= tag.name %></button>
-              <% end%>
+        <% end%>
       </div>
     </div>
   </div>
