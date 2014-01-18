@@ -22,7 +22,7 @@ feature 'user votes' do
       vote_count = Vote.all.count
       click_on 'like'
 
-      expect(page).to have_content(1)
+      expect(page).to have_button('1 unlike')
       expect(vote_count + 1).to eql(Vote.all.count)
     end
 

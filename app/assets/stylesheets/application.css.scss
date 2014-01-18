@@ -55,6 +55,7 @@ html, body {
 #signup-margin {
   margin: 0 0 -12px 0;
 }
+
 #homepage-intro {
   text-align: left;
   margin-top: 20px;
@@ -70,4 +71,21 @@ html, body {
 
 .sign_up_size {
   font-size: 20px;
+}
+
+.voting_padding {
+  width: 0;
+}
+
+.voting_margins {
+  margin-left: -8%;
+  display: inline-block;
+}
+
+.bottom-margin {
+  margin: 20px 0;
+}
+
+.padding-left {
+  padding-left: 10px;
 }
