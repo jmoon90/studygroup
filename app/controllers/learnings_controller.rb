@@ -35,7 +35,6 @@ class LearningsController < ApplicationController
       flash[:notice] ='Invalid input. Please try again'
       render :edit
     end
-
   end
 
   private
