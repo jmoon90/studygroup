@@ -38,7 +38,10 @@ gem 'compass'
 
 gem 'gravatar_image_tag'
 
-gem 'carrierwave-aws'
+gem 'carrierwave'
+
+gem "fog"
+
 
 gem 'simple_form'
 
@@ -64,8 +67,6 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'spring'
-  gem "spring-commands-rspec"
 end
 
 group :doc do
