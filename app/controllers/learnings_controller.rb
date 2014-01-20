@@ -2,8 +2,7 @@ class LearningsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
   def index
-    user = current_user
-    @learnings = Learning.filter_by(params[:sort], user)
+    @learnings = Learning.filter_by(params[:sort])
   end
 
   def show
@@ -40,6 +39,10 @@ class LearningsController < ApplicationController
       flash[:notice] ='Invalid input. Please try again'
       render :edit
     end
+  end
+
+  def mylearning
+    @learnings = Learning.where(user_id: current_user).order(created_at: :desc)
   end
 
   private
