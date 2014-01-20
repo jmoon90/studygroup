@@ -11,10 +11,7 @@
 
   <div class='small-2 medium-2 columns'>
     <div class='bottom-margin'>
-      <%= form_tag(learnings_path, method: :get) do %>
-        <%= hidden_field_tag 'sort', 'my_learning' %>
-        <%= submit_tag 'My Learnings', class:'button tiny radius round', id:'drop' %>
-      <% end %>
+      <%= link_to 'My Learnings', learning_mylearning_path(current_user), class:'button tiny radius round' %>
     </div>
   </div>
 </div>

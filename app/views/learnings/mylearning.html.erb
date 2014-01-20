@@ -1,0 +1,20 @@
+<% provide(:title, "My Learnings") %>
+
+<div class="row">
+  <div class='12-small columns'>
+    <h1><%= current_user.email %> Group</h1>
+    <%= gravatar_for current_user%>
+  </div>
+</div>
+
+<div class="row">
+  <div class='12-small columns'>
+    <ol class="small-block-grid-3">
+      <% @learnings.each do |learning| %>
+        <div class='12-small columns'>
+            <li><%= link_to learning.title, learning_path(learning) %>
+        </div>
+      <% end %>
+    </ol>
+  </div>
+</div>
