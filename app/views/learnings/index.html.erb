@@ -11,7 +11,9 @@
 
   <div class='small-2 medium-2 columns'>
     <div class='bottom-margin'>
-      <%= link_to 'My Learnings', learning_mylearning_path(current_user), class:'button tiny radius round' %>
+      <% if current_user %>
+        <%= link_to 'My Learnings', learning_mylearning_path(current_user), class:'button tiny radius round' %>
+      <% end %>
     </div>
   </div>
 </div>
