@@ -42,13 +42,12 @@ gem 'carrierwave'
 
 gem "fog"
 
-
 gem 'simple_form'
 
 gem 'rmagick'
 
 group :development, :test do
-  gem 'dotenv'
+  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'capybara'
   gem 'rspec-rails'
