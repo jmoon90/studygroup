@@ -15,8 +15,8 @@
 /log/*.log
 /tmp
 
-Ignore simplecov output
-/coverage/
+#Ignore simplecov output
+coverage/
 =======
 /.env
 
