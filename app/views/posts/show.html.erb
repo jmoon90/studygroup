@@ -46,7 +46,7 @@
 
 <%= form_for([@post, @comment]) do |f| %>
   <div class="row" >
-    <div class='small-9 columns' id='form-styling'>
+    <div class='small-9 columns small-offset-1' id='form-styling'>
       <%= f.label :answer, "Your Answer" %>
       <%= f.text_field :answer %>
       <div class="actions">
