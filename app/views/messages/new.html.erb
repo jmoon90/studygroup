@@ -2,8 +2,16 @@
   <h3 style="text-align: center; margin-top:15px">Contact Us</h3>
 </div>
 
+<div class="small-2 columns">
+  <ol class="side-nav">
+    <li><b>Report<span style='color: red'> bugs</span></b></li>
+    <b><li>Request<span style='color: red'> features</span></li></b>
+    <b><li>Leave<span style='color: red'> feedback</span></li></b>
+  </ol>
+</div>
+
 <div class='row' style="align:center;">
-  <div class="small-12 medium-6 medium-offset-3 columns">
+  <div class="small-10 medium-6 medium-offset-1 columns">
     <%= simple_form_for @message do |f| %>
       <%= f.input :email %>
       <%= f.input :subject %>
