@@ -22,3 +22,14 @@ $(function(){ $(document).foundation();
   });
 });
 
+$(function() {
+    var words = ['Ruby', 'Rails', 'Code'],
+        index = 0,
+        $el = $('#rotate-word')
+    setInterval(function() {
+        index++ < words.length - 1 || (index = 0);
+        $el.fadeOut(function() {
+            $el.text(words[index]).fadeIn();
+        });
+    }, 3000);
+});
