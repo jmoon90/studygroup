@@ -15,6 +15,6 @@ feature 'User views a group' do
 
   scenario "User see's other users in group" do
     click_on "Join Group"
-    expect(page).to have_content(user.email)
+    expect(page).to have_content(user.email[/[^@]+/])
   end
 end
