@@ -37,6 +37,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def filter_tags
+    @tag = Tag.find(params[:format])
+    @posts = Post.joins(:tags).where(tags: {id: @tag.id})
+  end
+
   private
 
   def post_params
