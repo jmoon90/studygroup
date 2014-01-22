@@ -1,6 +1,6 @@
 <div class="row">
   <div class= 'large-10 columns'>
-    <h3><%= @group.name %><span class='tutorial-name'> - <%= @group.tutorial.name %></span></h3>
+    <h3><%= @group.name %><span class='tutorial-name'> - <%= @tutorial.name %></span></h3>
   </div>
   <div class='large-2 columns' style='margin-top:10px;'>
     <p></p>
@@ -9,10 +9,10 @@
 
 <div class='row'>
   <div class='small-12 columns'>
-    <% if @group.users.include?(current_user) %>
+    <% if @group.users.any? { |user| user == current_user } %>
       <%= button_to 'Leave Group', group_membership_path(@group, current_user), method: :delete %>
     <% else %>
-      <% if @group.users.count >= @group.size %>
+      <% if @group.memberships_count >= @group.size %>
         <%= '| Full Group' %>
       <% else %>
         <%= button_to "Join Group", group_memberships_path(@group), method: :post %>
@@ -24,9 +24,9 @@
 <div class='row'>
   <div class='small-2 columns side'>
     <ul class="side-nav group-member-list">
-      <% @group.users.each do |user| %>
+      <% @users.each do |user| %>
         <%= gravatar_for user %>
-        <li><%= user.email[/[^@]+/] %></li>
+        <li><%= user[/[^@]+/] %></li>
       <% end %>
     </ul>
   </div>

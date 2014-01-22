@@ -19,35 +19,33 @@
 
 <div class='row'>
   <div class='small-9 small-offset-1 columns'>
-    <% if @post.comments == [] %>
+
+    <% if @post.comments.empty? %>
       <p>No answers yet<p>
     <% else %>
-      <h4><%= pluralize("#{@post.comments.count}", 'Answer')%></h4>
-    <% end%>
+      <h4><%= pluralize("#{ @post.comments.size }", 'Answer')%></h4>
+    <% end %>
   </div>
   <div class="small-2 columns">
     tagged
-    <div class = 'row' id='tagged'>
-      <div class='small-2 columns'>
-        <% @post.tags.each do |tag| %>
-          <%= link_to tag.name, filter_tags_posts_path(tag), class: 'button tiny', id: 'tny-margins' %>
-        <% end %>
-      </div>
-    </div>
+    <br>
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name, filter_tags_posts_path(tag), class: 'button tiny', id: 'tny-margins' %>
+    <% end %>
   </div>
 </div>
 <br>
 
-  <% @post.comments.each do |comment| %>
-    <div class="row">
-      <div class="small-8 small-offset-1 columns margin-top">
-        <span class='word_break'><%= comment.answer %></span>
-      </div>
-      <div class="small-3 columns margin-top">
-        <%= comment.user.email %>
-      </div>
+<% @post.comments.each do |comment| %>
+  <div class="row">
+    <div class="small-8 small-offset-1 columns margin-top">
+      <span class='word_break'><%= comment.answer %></span>
     </div>
-  <% end %>
+    <div class="small-3 columns margin-top">
+      <%= comment.user.email %>
+    </div>
+  </div>
+<% end %>
 
 <%= simple_form_for([@post, @comment]) do |f| %>
   <div class="row" >

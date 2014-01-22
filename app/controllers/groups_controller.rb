@@ -8,6 +8,8 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @posts = @group.posts
+    @tutorial = @group.tutorial
+    @users = @group.users.pluck(:email)
   end
 
   def new
@@ -27,6 +29,7 @@ class GroupsController < ApplicationController
 
   def mygroup
     @memberships = Membership.where(user_id: current_user.id)
+    @user = current_user
   end
 
   private
