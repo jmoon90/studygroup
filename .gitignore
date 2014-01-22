@@ -16,7 +16,7 @@
 /tmp
 
 #Ignore simplecov output
-coverage/
+/coverage/
 =======
 /.env
 
