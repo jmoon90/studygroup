@@ -1,4 +1,7 @@
 <div class="row" style="text-align:right; margin-right:5px">
+  <% if current_user == @post.user %>
+    <%= link_to 'Edit Post', edit_post_path(@post) %> |
+  <% end %>
   <%= link_to "Back to Group", group_path(@post.group) %>
 </div>
 
@@ -11,6 +14,16 @@
 <div class="row">
   <div class="small-10 small-centered columns">
     <%= @post.description %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='small-9 small-offset-1 columns'>
+    <% if @post.comments == [] %>
+      <p>No answers yet<p>
+    <% else %>
+      <h4><%= pluralize("#{@post.comments.count}", 'Answer')%></h4>
+    <% end%>
   </div>
   <div class="small-2 columns">
     tagged
@@ -25,33 +38,22 @@
 </div>
 <br>
 
-<div class='row'>
-  <div class='small-9 small-offset-1 columns'>
-    <% if @post.comments == [] %>
-      <p>No answers yet<p>
-    <% else %>
-      <h4><%= pluralize("#{@post.comments.count}", 'Answer')%></h4>
-  </div>
-</div>
-
   <% @post.comments.each do |comment| %>
     <div class="row">
-      <div class="small-8 small-offset-1 columns"><%= comment.answer %></div>
-      <div class="small-3 columns">
+      <div class="small-8 small-offset-1 columns margin-top">
+        <span class='word_break'><%= comment.answer %></span>
+      </div>
+      <div class="small-3 columns margin-top">
         <%= comment.user.email %>
       </div>
     </div>
   <% end %>
-<% end %>
 
-<%= form_for([@post, @comment]) do |f| %>
+<%= simple_form_for([@post, @comment]) do |f| %>
   <div class="row" >
-    <div class='small-9 columns small-offset-1' id='form-styling'>
-      <%= f.label :answer, "Your Answer" %>
-      <%= f.text_field :answer %>
-      <div class="actions">
-        <%= f.submit 'Post Your Answer' %>
-      </div>
+    <div class='small-8 small-offset-1 columns' id='form-styling'>
+      <%= f.input :answer, label: "Your Answer" %>
+      <%= f.submit 'Post Your Answer' %>
     </div>
   </div>
 <% end %>

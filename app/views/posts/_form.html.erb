@@ -1,0 +1,15 @@
+<div class='row'>
+  <div class="small-12 medium-6 medium-centered columns">
+    <%= simple_form_for(@post) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description, as: :text %>
+      <%= f.input :tag_list %>
+
+      <div class="row">
+        <div class='small-12 columns'>
+          <%= f.submit class: "button expand" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
