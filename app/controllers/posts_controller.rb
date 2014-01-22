@@ -21,6 +21,21 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.where(title: post_params[:title]).first
+    if @post.update(post_params)
+      flash[:notice] = "Successfully edited post"
+      redirect_to group_path(@post.group)
+    else
+      flash[:notice] = "There was an error. Please try again."
+      render :edit
+    end
+  end
+
   private
 
   def post_params
