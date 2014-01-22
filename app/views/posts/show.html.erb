@@ -30,8 +30,8 @@
     <div class = 'row' id='tagged'>
       <div class='small-2 columns'>
         <% @post.tags.each do |tag| %>
-          <button class='button tiny' id='tny-margins'><%= tag.name %></button>
-        <% end%>
+          <%= button_to tag.name, filter_tags_posts_path(tag), class: 'button tiny', id: 'tny-margins' %>
+        <% end %>
       </div>
     </div>
   </div>

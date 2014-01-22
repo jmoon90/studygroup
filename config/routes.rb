@@ -16,6 +16,7 @@ Studygroup::Application.routes.draw do
     resources :taggings, only: [:create]
     resources :comments, only: [:create], has_many: :tags
     collection do
+      get 'filter_tags'
       get 'new/:id', to: 'posts#new', as: 'new'
       post ':id', to: 'posts#create', as: ''
     end
