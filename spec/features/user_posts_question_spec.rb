@@ -46,18 +46,18 @@ feature 'Group post' do
     scenario 'by clicking on one' do
       post = FactoryGirl.create(:post, group_id: membership.group.id)
       post1 = FactoryGirl.create(:post, title: 'pizza eater', group_id: 9999)
-      post2 = FactoryGirl.create(:post, title: 'machine eater', group_id: 9899)
+
       tag = FactoryGirl.create(:tag)
-      tag2 = FactoryGirl.create(:tag, name: 'type')
+      tag1 = FactoryGirl.create(:tag, name: 'type')
+
       post.tags << tag
-      post1.tags << tag
-      post2.tags << tag2
+      post1.tags << tag1
+
       visit post_path(post.id)
-      click_on('tutorial 1', match: :first)
+      click_on(tag.name, match: :first)
 
       expect(page).to have_content(post.title)
-      expect(page).to have_content(post1.title)
-      expect(page).to_not have_content(post2.title)
+      expect(page).to_not have_content(post1.title)
     end
   end
 end
