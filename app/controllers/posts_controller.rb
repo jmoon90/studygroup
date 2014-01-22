@@ -26,7 +26,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.where(title: post_params[:title]).first
+    @post = Post.find(params[:id])
+
     if @post.update(post_params)
       flash[:notice] = "Successfully edited post"
       redirect_to group_path(@post.group)

@@ -25,6 +25,8 @@ feature 'user views post' do
     end
 
     scenario 'with valid information' do
+      fill_in 'Title', with: "New title"
+      fill_in 'Description', with: "New info"
       fill_in 'Tag list', with: "more, tags"
       click_on 'Update Post'
 
