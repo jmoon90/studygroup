@@ -32,9 +32,10 @@ feature 'user visit post' do
 
   scenario 'views tag for post' do
     post = FactoryGirl.create(:post)
-    FactoryGirl.create(:tagging, taggable_id: post.id, taggable_type: 'Post')
+    tag = FactoryGirl.create(:tag)
+    FactoryGirl.create(:tagging, taggable_id: post.id, taggable_type: 'Post', tag_id: tag.id)
     visit post_path(post)
-    expect(page).to have_content(post.tags.first.name)
+    expect(page).to have_link(tag.name)
   end
 
   scenario 'views page with comments' do

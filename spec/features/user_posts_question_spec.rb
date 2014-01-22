@@ -53,7 +53,7 @@ feature 'Group post' do
       post1.tags << tag
       post2.tags << tag2
       visit post_path(post.id)
-      first(:link, 'tutorial 1').click
+      click_on('tutorial 1', match: :first)
 
       expect(page).to have_content(post.title)
       expect(page).to have_content(post1.title)
