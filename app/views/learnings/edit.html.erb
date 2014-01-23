@@ -1,1 +1,7 @@
 <%= render 'partials/form', learning: @learning %>
+
+<div class='row' style="align:center;">
+  <div class="small-9 medium-6 medium-offset-2 columns margin-top">
+    <%= link_to 'Delete Learning', @learning, method: :delete %>
+  </div>
+</div>
