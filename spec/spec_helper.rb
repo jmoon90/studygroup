@@ -7,6 +7,9 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'valid_attribute'
 
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
 require 'coveralls'
 Coveralls.wear!('rails')
 

@@ -16,6 +16,9 @@ gem 'unicorn'
 
 #background processors
 gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+gem 'sidetiq'
 
 gem 'sinatra', require: false
 
