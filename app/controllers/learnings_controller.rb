@@ -2,7 +2,7 @@ class LearningsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
   def index
-    @learnings = Learning.filter_by(params[:sort])
+    @learnings = Learning.filter_by(params[:sort]).page(params[:page]).per(10)
   end
 
   def show
