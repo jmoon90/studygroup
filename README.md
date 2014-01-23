@@ -1,4 +1,5 @@
-# [Study Group](www.pairstudying.com)
+# [Study Group](http://www.pairstudying.com/)
+
 
 Learn better by studying with others. Form groups for specific topics
 and set group size so and learn together. 
