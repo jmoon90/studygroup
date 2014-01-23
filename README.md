@@ -1,4 +1,4 @@
-# (Study Group)[www.pairstudying.com]
+# [Study Group](www.pairstudying.com)
 
 Learn better by studying with others. Form groups for specific topics
 and set group size so and learn together. 
@@ -19,7 +19,14 @@ didn't make sense to follow others like Reddit.
 
 Tutorial list - Rails Tutorial, Ruby Monk, Project Euler, and Codecademy
 
-Blog post why I built this (site)[http://jmoon90.github.io/blog/2014/01/18/pairstudying-launches-to-help-beginners-programmers-learn-in-a-group/].
+Blog post why I built this [site](http://jmoon90.github.io/blog/2014/01/18/pairstudying-launches-to-help-beginners-programmers-learn-in-a-group/).
+
+
+##To-do list
+
+Check out [Issue
+Tracker](https://github.com/jmoon90/studygroup/issues?state=open). These
+are the features and bugs that will be addressed in the near future.
 
 [![Build Status](https://travis-ci.org/jmoon90/studygroup.png?branch=master)](https://travis-ci.org/jmoon90/studygroup)
 [![Coverage Status](https://coveralls.io/repos/jmoon90/studygroup/badge.png)](https://coveralls.io/r/jmoon90/studygroup)
