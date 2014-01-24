@@ -9,7 +9,7 @@
 
 <div class='row'>
   <div class='small-12 columns'>
-    <% if @group.users.any? { |user| user == current_user } %>
+    <% if Group.belongs_to_current_user?(@group, current_user) %>
       <%= button_to 'Leave Group', group_membership_path(@group, current_user), method: :delete %>
     <% else %>
       <% if @group.memberships_count >= @group.size %>

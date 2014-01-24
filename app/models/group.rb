@@ -47,4 +47,12 @@ class Group < ActiveRecord::Base
   def self.group_size
     @group_size = group.size
   end
+
+  def self.users_count_against_group_size(group)
+    "#{ group.memberships_count } / #{ group.size }"
+  end
+
+  def self.belongs_to_current_user?(group, current_user)
+    group.users.any? { |user| user == current_user }
+  end
 end

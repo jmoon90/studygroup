@@ -34,7 +34,7 @@
     <% @groups.each do |group| %>
       <li class='groups'>
         <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
-        <%= "#{ group.memberships_count } / #{ group.size }" %>
+        <%= Group.users_count_against_group_size(group) %>
         <%= link_to group.name, group_path(group), class: 'group_name' %>
       </li>
     <% end %>
