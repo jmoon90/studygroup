@@ -14,6 +14,8 @@ gem 'sass-rails', '~> 4.0.0'
 #instead of webrex using unicorn
 gem 'unicorn'
 
+gem 'timecop'
+
 #background processors
 gem 'sidekiq'
 gem 'sinatra', require: false
