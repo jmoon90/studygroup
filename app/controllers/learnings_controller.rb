@@ -4,6 +4,7 @@ class LearningsController < ApplicationController
   def index
     user = current_user
     @learnings = Learning.filter_by(params[:sort], user)
+    HardWorker.perform_async
   end
 
   def show

@@ -39,4 +39,19 @@ feature 'user votes' do
       expect(page).to have_button('like')
     end
   end
+
+  context 'rank is deteremined' do
+    before do
+      FactoryGirl.create(:learning, votes_count: 50)
+      Timecop.freeze(Time.local(1990))
+    end
+    after do
+      Timecop.return
+    end
+    scenario 'learning changes position based on rank' do
+      learning1 = FactoryGirl.create(:learning, description: 'second place', votes_count: 60)
+
+      expect learning1.rank < Learning.first.rank
+    end
+  end
 end

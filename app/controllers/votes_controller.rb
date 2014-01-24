@@ -5,7 +5,6 @@ class VotesController < ApplicationController
     vote.learning = learning
 
     if vote.save
-      HardWorker.perform_async
       redirect_to :back
     else
       redirect_to :back
@@ -14,8 +13,6 @@ class VotesController < ApplicationController
 
   def destroy
     current_user.votes.destroy(params[:id])
-
-    HardWorker.perform_async
     redirect_to :back
   end
 end
