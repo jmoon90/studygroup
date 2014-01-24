@@ -37,15 +37,13 @@
 </div>
 
 <div class="row" style="margin-left:10px">
-  <div class='small-12 columns'>
-  <ul class="small-block-grid-2" id="groups">
-    <% @groups.each do |group| %>
-      <li class='groups'>
+  <% @groups.each do |group| %>
+    <div class='small-12 columns'>
+      <div class='groups'>
         <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
         <%= "#{group.users_in_group} / #{group.size}" %>
         <%= link_to group.name, group_path(group), class: 'group_name' %>
-      </li>
-    <% end %>
-  </ul>
-  </div>
+      </div>
+    </div>
+  <% end %>
 </div>
