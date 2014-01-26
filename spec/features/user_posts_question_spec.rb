@@ -53,7 +53,7 @@ feature 'Group post' do
       post.tags << tag
       post1.tags << tag1
 
-      visit post_path(post.id)
+      visit post_path(post)
       click_on(tag.name, match: :first)
 
       expect(page).to have_content(post.title)

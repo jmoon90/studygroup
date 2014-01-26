@@ -54,6 +54,14 @@ class Group < ActiveRecord::Base
     @group_size = group.size
   end
 
+  def self.users_count_against_group_size(group)
+    "#{ group.memberships_count } / #{ group.size }"
+  end
+
+  def self.belongs_to_current_user?(group, current_user)
+    group.users.any? { |user| user == current_user }
+  end
+
   def self.recent_activity(group)
     if Post.where(group_id: group.id).empty?
       group.updated_at.strftime('%I:%M %p, %b %e')

@@ -61,6 +61,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'email_spec'
+  gem 'rack-mini-profiler'
 end
 
 group :test do

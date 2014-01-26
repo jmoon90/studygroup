@@ -27,11 +27,11 @@
     </ul>
   </div>
 
-  <div class="small-2 medium-2 columns">
-    <label>Sort by Tutorial</label>
-    <%= form_tag(groups_path, method: :get) do %>
-      <%= select_tag(:tutorial, options_from_collection_for_select(Tutorial.all, :id, :name)) %>
-      <%= submit_tag "Sort" %>
+<div class="small-2 medium-2 columns">
+  <label>Sort by Tutorial</label>
+  <%= form_tag(groups_path, method: :get) do %>
+    <%= select_tag(:tutorial, options_from_collection_for_select(Tutorial.all, :id, :name)) %>
+    <%= submit_tag "Sort" %>
     <% end %>
   </div>
 </div>
@@ -60,7 +60,7 @@
         <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
       </div>
       <div class='small-12 medium-2 columns'>
-        <%= "#{group.users_in_group} / #{group.size}" %>
+        <%= Group.users_count_against_group_size(group) %>
       </div>
       <div class='small-12 medium-6 columns'>
         <%= group.name %>
