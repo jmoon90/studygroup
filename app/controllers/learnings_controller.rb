@@ -2,7 +2,7 @@ class LearningsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
   def index
-    @learnings = Learning.filter_by(params[:sort])
+    @learnings = Learning.filter_by(params[:sort]).page(params[:page]).per(10)
   end
 
   def show
@@ -34,11 +34,18 @@ class LearningsController < ApplicationController
 
     if @learning.save
       flash[:notice] ='Yay keep on learning!'
-      redirect_to new_learning_path
+      redirect_to learning_path(@learning)
     else
       flash[:notice] ='Invalid input. Please try again'
       render :edit
     end
+  end
+
+  def destroy
+    @learning = Learning.find(params[:id])
+    @learning.destroy
+    flash[:notice] ='Keep trying. Keep learning!'
+    redirect_to learnings_path
   end
 
   def mylearning

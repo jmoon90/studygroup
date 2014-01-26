@@ -42,6 +42,10 @@
       <span class='word_break'><%= comment.answer %></span>
     </div>
     <div class="small-3 columns margin-top">
+      <%= comment.user.email[/[^@]+/] %>
+    </div>
+    </div>
+    <div class="small-3 columns margin-top">
       <%= comment.user.email %>
     </div>
   </div>

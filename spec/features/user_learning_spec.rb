@@ -35,13 +35,25 @@ feature 'user view today I learned' do
       expect(page).to have_content('Invalid input. Please try again')
     end
 
-    scenario 'edit learning' do
-      learning = FactoryGirl.create(:learning)
-      visit edit_learning_path(learning)
-      fill_in 'Title', with: 'I edit my TIL'
-      click_on 'submit'
+    context 'edit page' do
+      scenario 'edit learning' do
+        learning = FactoryGirl.create(:learning, user_id: user.id)
+        visit learning_path(learning)
 
-      expect(page).to have_content('Yay keep on learning!')
+        click_on 'Edit Learning'
+        fill_in 'Title', with: 'I edit my TIL'
+        click_on 'submit'
+
+        expect(page).to have_content('Yay keep on learning!')
+      end
+
+      scenario 'delete learning' do
+        learning = FactoryGirl.create(:learning, user_id: user.id)
+        visit  edit_learning_path(learning)
+        click_on 'Delete Learning'
+
+        expect(page).to have_content('Keep trying. Keep learning!')
+      end
     end
   end
 

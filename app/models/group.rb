@@ -24,15 +24,21 @@ class Group < ActiveRecord::Base
     inverse_of: :group
 
   def self.most_users
-    all.order(memberships_count: :desc)
+    order(memberships_count: :desc)
   end
 
   def self.least_users
-    all.order(:memberships_count)
+    order(:memberships_count)
   end
+
 
   def all
     Group.all
+  end
+
+  def self.by_tutorial_name(name)
+    tutorial = Tutorial.find(name)
+    joins(:tutorial).where('tutorials.name' => tutorial.name )
   end
 
   def self.filtered_by(options)
@@ -54,5 +60,13 @@ class Group < ActiveRecord::Base
 
   def self.belongs_to_current_user?(group, current_user)
     group.users.any? { |user| user == current_user }
+  end
+
+  def self.recent_activity(group)
+    if Post.where(group_id: group.id).empty?
+      group.updated_at.strftime('%I:%M %p, %b %e')
+    else
+      Post.where(group_id: group.id).order(updated_at: :desc).limit(1).first.updated_at.strftime('%I:%M %p, %b %e')
+    end
   end
 end

@@ -26,18 +26,48 @@
       </li>
     </ul>
   </div>
-</div>
 
-<div class="row" style="margin-left:10px">
-  <div class='small-12 columns'>
-  <ul class="small-block-grid-2" id="groups">
-    <% @groups.each do |group| %>
-      <li class='groups'>
-        <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
-        <%= Group.users_count_against_group_size(group) %>
-        <%= link_to group.name, group_path(group), class: 'group_name' %>
-      </li>
+<div class="small-2 medium-2 columns">
+  <label>Sort by Tutorial</label>
+  <%= form_tag(groups_path, method: :get) do %>
+    <%= select_tag(:tutorial, options_from_collection_for_select(Tutorial.all, :id, :name)) %>
+    <%= submit_tag "Sort" %>
     <% end %>
-  </ul>
   </div>
 </div>
+
+<div class='row'>
+  <div class='small-12 columns margin-top'>
+    <div class='small-2 columns'>
+      Tutorial Logo
+    </div>
+    <div class='small-2 columns'>
+      Current Group Size
+    </div>
+    <div class='small-6 columns'>
+      Group Name
+    </div>
+    <div class='small-2 columns'>
+      <b>Last Active</b>
+    </div>
+  </div>
+</div>
+
+<% @groups.each do |group| %>
+  <%= link_to group_path(group), class: "group" do %>
+    <div class="row">
+      <div class='small-12 medium-2 columns'>
+        <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
+      </div>
+      <div class='small-12 medium-2 columns'>
+        <%= Group.users_count_against_group_size(group) %>
+      </div>
+      <div class='small-12 medium-6 columns'>
+        <%= group.name %>
+      </div>
+      <div class='small-12 medium-2 columns'>
+        <%= Group.recent_activity(group) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

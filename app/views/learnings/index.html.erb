@@ -20,32 +20,30 @@
 
 
 <div class='row'>
-</div>
-    <ol>
-      <% @learnings.each do |learning| %>
-      <div class='row'>
-
-        <div class='small-2 columns'>
-          <li class='make_inline'>
-            <% if user_signed_in? %>
-              <% if learning.has_vote_from?(current_user) %>
-                 <%= button_to "#{learning.votes_count} unlike", learning_vote_path(learning, learning.vote_from(current_user)), method: :delete, class:"button tiny primary" %>
-              <% else %>
-                <%= button_to "#{learning.votes_count} like", learning_votes_path(learning), class:"button tiny primary" %>
-              <% end %>
+  <ol>
+    <%= paginate @learnings %>
+    <% @learnings.each do |learning| %>
+    <div class='row'>
+      <div class='small-2 columns'>
+        <li class='make_inline'>
+          <% if user_signed_in? %>
+            <% if learning.has_vote_from?(current_user) %>
+               <%= button_to "#{learning.votes_count} unlike", learning_vote_path(learning, learning.vote_from(current_user)), method: :delete, class:"button tiny primary" %>
             <% else %>
-            <%= link_to "#{learning.votes_count} like","#", "data-reveal-id" => 'myModal', class:"button tiny primary" %>
+              <%= button_to "#{learning.votes_count} like", learning_votes_path(learning), class:"button tiny primary" %>
             <% end %>
-          </li>
-        </div>
-
-        <div class='small-10 columns'>
-            <%= link_to learning.title, learning_path(learning), class:'voting_margins' %>
-        </div>
+          <% else %>
+          <%= link_to "#{learning.votes_count} like","#", "data-reveal-id" => 'myModal', class:"button tiny primary" %>
+          <% end %>
+        </li>
       </div>
-      <% end %>
-    </ol>
-  </div>
+
+      <div class='small-10 columns'>
+          <%= link_to learning.title, learning_path(learning), class:'voting_margins' %>
+      </div>
+    </div>
+    <% end %>
+  </ol>
 </div>
 
 <div id="myModal" class="reveal-modal" data-reveal>

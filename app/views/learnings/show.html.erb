@@ -1,4 +1,7 @@
 <div class="row" style="text-align:right; margin-right:5px">
+  <% if current_user == @learning.user %>
+    <%= link_to 'Edit Learning', edit_learning_path(@learning) %> |
+  <% end %>
   <%= link_to "Back to TIL", learnings_path %>
 </div>
 

@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 feature 'signed in user visit home page' do
-  given(:group) { FactoryGirl.create(:group, name: 'hartl') }
-
   context "they want to sort by least and most" do
+    given(:group) { FactoryGirl.create(:group, name: 'hartl') }
     before(:each) do
       tutorial = FactoryGirl.create(:tutorial, name: 'mu', id: 16, image: nil)
       group1 = FactoryGirl.create(:group, name: 'monsu', id: 16, tutorial_id: tutorial.id)
@@ -34,6 +33,7 @@ feature 'signed in user visit home page' do
   end
 
   scenario 'view groups current member size against max memeber size' do
+      group = FactoryGirl.create(:group)
     2.times do
       FactoryGirl.create(:membership, group: group)
     end
@@ -41,5 +41,13 @@ feature 'signed in user visit home page' do
     visit root_path
 
     expect(page).to have_content('2 / 12')
+  end
+
+  scenario 'view groups stats' do
+    membership = FactoryGirl.create(:membership)
+    group = membership.group
+    visit groups_path
+
+    expect(page).to have_content(group.updated_at.strftime('%I:%M %p, %b %e'))
   end
 end

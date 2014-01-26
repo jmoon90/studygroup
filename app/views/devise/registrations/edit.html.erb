@@ -1,5 +1,10 @@
 <div class='row'>
-  <div class="small-6 large-centered columns">
+  <div class="small-2 small-offset-1 columns">
+    <%= gravatar_for current_user.email %>
+    <p>Don't see an image?</p>
+    <p>Visit <a href= "http://en.gravatar.com/">Gravatar</a> for an avatar</p>
+  </div>
+  <div class="small-8 columns">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
