@@ -1,16 +1,16 @@
 <%= content_for :header do %>
   <div id='headerwrap' class='small-12 medium-12 columns'>
     <div class='row'>
-      <div class='small-4 small-offset-8 columns' id='homepage-intro'>
+      <div class='small-12 medium-offset-8 columns' id='homepage-intro'>
         <h1 class='tagline'><b><span>Learn </span><span id='rotate-word'>Code</span></b></h1>
         <h1 class='tagline'><b>better, together</b></h1>
         <br>
         <br>
       </div>
       <div class='row'>
-        <div class='small-12  medium-offset-8 columns'>
+        <div class='small-12 medium-offset-8 columns'>
           <div class='row'>
-            <div class='small-12 medium-3 columns'>
+            <div class='small-12 medium-4 columns'>
               <%= simple_form_for('user', url: user_registration_path) do |f| %>
                 <div id='signup-margin'>
                   <%= f.input :email, label: false, placeholder: 'Your Email' %>
@@ -33,41 +33,38 @@
   </div>
 
   <div class='row'>
-    <div class='small-12 small-offset-2 columns'>
-      <h3 id='homepage-intro'>Why Study Together?</h3>
+    <div class='small-12 columns'>
+      <h2 id='homepage-intro'>Why Study Together?</h2>
       <p>Studying in groups helps students learn more effectively -<b> Washington University</b></p>
       <p>Reseachers report that students learn best when they are actively involved in the process -<b> Berkeley University</b></p>
     </div>
   </div>
 
   <div class='row'>
-    <div class='small-12 small-offset-2 columns'>
-        <ul id='center-ul' class='why_header'><h1>Why?</h1>
-          <p>Solve problems faster</p>
-          <p>Gain multi-perspective on problems</p>
-          <p>Learn by teaching</p>
-          <p>Face hard questions together</p>
-        </ul>
+    <div class='small-12 columns'>
+      <h2>Why?</h2>
+      <p>Solve problems faster</p>
+      <p>Gain multi-perspective on problems</p>
+      <p>Learn by teaching</p>
+      <p>Face hard questions together</p>
     </div>
   </div>
 
   <div class='row'>
-    <div class='small-12 small-offset-2 columns'>
-      <ul><h2>How Does It Work?</h2>
-        <p>Connect with others on topics</p>
-        <p>Share problems and solutions</p>
-        <p>Keep each other accountable</p>
-        <p>Track your progress</p>
-      </ul>
+    <div class='small-12 columns'>
+      <h2>How Does It Work?</h2>
+      <p>Connect with others on topics</p>
+      <p>Share problems and solutions</p>
+      <p>Keep each other accountable</p>
+      <p>Track your progress</p>
     </div>
   </div>
 
   <div class='row'>
-    <div class='small-12 small-offset-2 columns'>
-      <ul><h3>What?</h3>
-        <p>Learn more, faster, and better together</p>
-        <div class='sign_up_size'><%= link_to 'Join Today', new_user_registration_path %></div>
-      </ul>
+    <div class='small-12 columns'>
+      <h2>What?</h2>
+      <p>Learn more, faster, and better together</p>
+      <div class='sign_up_size'><%= link_to 'Join Today', new_user_registration_path %></div>
     </div>
   </div>
 <% end %>
