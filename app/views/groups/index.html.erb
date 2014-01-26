@@ -29,28 +29,45 @@
 
   <div class="small-2 medium-2 columns">
     <label>Sort by Tutorial</label>
-      <%= form_tag(groups_path, method: :get) do %>
-        <%= select_tag(:tutorial, options_from_collection_for_select(Tutorial.all, :id, :name)) %>
-        <%= submit_tag "Sort" %>
-      <% end %>
+    <%= form_tag(groups_path, method: :get) do %>
+      <%= select_tag(:tutorial, options_from_collection_for_select(Tutorial.all, :id, :name)) %>
+      <%= submit_tag "Sort" %>
+    <% end %>
   </div>
 </div>
 
-<div class="row" style="margin-left:10px">
-  <% @groups.each do |group| %>
-    <div class='small-12 columns groups'>
-      <div class='small-2 columns'>
+<div class='row'>
+  <div class='small-12 columns margin-top'>
+    <div class='small-2 columns'>
+      Tutorial Logo
+    </div>
+    <div class='small-2 columns'>
+      Current Group Size
+    </div>
+    <div class='small-6 columns'>
+      Group Name
+    </div>
+    <div class='small-2 columns'>
+      <b>Last Active</b>
+    </div>
+  </div>
+</div>
+
+<% @groups.each do |group| %>
+  <%= link_to group_path(group), class: "group" do %>
+    <div class="row">
+      <div class='small-12 medium-2 columns'>
         <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
       </div>
-      <div class='small-2 columns'>
+      <div class='small-12 medium-2 columns'>
         <%= "#{group.users_in_group} / #{group.size}" %>
       </div>
-      <div class='small-6 columns'>
-        <%= link_to group.name, group_path(group), class: 'group_name' %>
+      <div class='small-12 medium-6 columns'>
+        <%= group.name %>
       </div>
-      <div class='small-2 columns'>
-        <b>Last Active</b> <%= group.updated_at.strftime('%I:%M %p, %b %e') %>
+      <div class='small-12 medium-2 columns'>
+        <%= group.updated_at.strftime('%I:%M %p, %b %e') %>
       </div>
     </div>
   <% end %>
-</div>
+<% end %>
