@@ -48,6 +48,6 @@ feature 'signed in user visit home page' do
     group = membership.group
     visit groups_path
 
-    expect(page).to have_content("Last Active #{group.updated_at.strftime('%I:%M %p, %b %e')}")
+    expect(page).to have_content(group.updated_at.strftime('%I:%M %p, %b %e'))
   end
 end

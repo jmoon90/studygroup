@@ -53,4 +53,12 @@ class Group < ActiveRecord::Base
   def self.group_size
     @group_size = group.size
   end
+
+  def self.recent_activity(group)
+    if Post.where(group_id: group.id).empty?
+      group.updated_at.strftime('%I:%M %p, %b %e')
+    else
+      Post.where(group_id: group.id).order(updated_at: :desc).limit(1).first.updated_at.strftime('%I:%M %p, %b %e')
+    end
+  end
 end
