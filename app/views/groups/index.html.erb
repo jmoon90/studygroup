@@ -56,7 +56,7 @@
 <% @groups.each do |group| %>
   <%= link_to group_path(group), class: "group" do %>
     <div class="row">
-      <div class='small-12 medium-2 columns'>
+      <div class='small-12 medium-2 columns margin-top-bottom'>
         <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
       </div>
       <div class='small-12 medium-2 columns'>
