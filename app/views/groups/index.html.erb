@@ -38,11 +38,18 @@
 
 <div class="row" style="margin-left:10px">
   <% @groups.each do |group| %>
-    <div class='small-12 columns'>
-      <div class='groups'>
+    <div class='small-12 columns groups'>
+      <div class='small-2 columns'>
         <%= image_tag group.tutorial.image_url(:thumb) if group.tutorial.image? %>
+      </div>
+      <div class='small-2 columns'>
         <%= "#{group.users_in_group} / #{group.size}" %>
+      </div>
+      <div class='small-6 columns'>
         <%= link_to group.name, group_path(group), class: 'group_name' %>
+      </div>
+      <div class='small-2 columns'>
+        <b>Last Active</b> <%= group.updated_at.strftime('%I:%M %p, %b %e') %>
       </div>
     </div>
   <% end %>
