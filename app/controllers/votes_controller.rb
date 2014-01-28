@@ -14,10 +14,10 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    current_user.votes.destroy(params[:id])
-
     learning = Learning.find(params[:learning_id])
     Learning.rank_learning(learning, learning.votes_count)
+
+    current_user.votes.destroy(params[:id])
     redirect_to learnings_path
   end
 end
