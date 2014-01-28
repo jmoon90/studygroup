@@ -7,9 +7,9 @@ class VotesController < ApplicationController
 
     if vote.save
       Learning.rank_learning(learning, learning.votes_count)
-      redirect_to :back
+      redirect_to learnings_path
     else
-      redirect_to :back
+      redirect_to learnings_path
     end
   end
 
