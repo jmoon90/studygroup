@@ -25,8 +25,10 @@ Studygroup::Application.routes.draw do
   resources :messages, only: [:new,:create]
 
   resources :learnings, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    get 'mylearning'
     resources :votes, only: [:create, :destroy]
+    collection do
+      get 'mylearning'
+    end
   end
 
 
