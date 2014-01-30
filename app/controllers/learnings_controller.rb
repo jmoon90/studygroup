@@ -33,10 +33,10 @@ class LearningsController < ApplicationController
     @learning = current_user.learnings.build(learning_params)
 
     if @learning.save
-      flash[:notice] ='Yay keep on learning!'
+      flash[:notice] = 'Yay keep on learning!'
       redirect_to learning_path(@learning)
     else
-      flash[:notice] ='Invalid input. Please try again'
+      flash[:notice] = 'Invalid input. Please try again'
       render :edit
     end
   end
@@ -44,11 +44,12 @@ class LearningsController < ApplicationController
   def destroy
     @learning = Learning.find(params[:id])
     @learning.destroy
-    flash[:notice] ='Keep trying. Keep learning!'
+    flash[:notice] = 'Keep trying. Keep learning!'
     redirect_to learnings_path
   end
 
   def mylearning
+    @user = current_user
     @learnings = Learning.where(user_id: current_user).order(created_at: :desc)
   end
 

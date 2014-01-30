@@ -3,9 +3,7 @@ Studygroup::Application.routes.draw do
   devise_for :users
 
   resources :groups, only: [:index, :show, :new, :create] do
-    collection do
-      get 'mygroup'
-    end
+    get 'mygroup', on: :collection
     resources :posts, only: [:index]
     resources :memberships, only: [:create, :destroy]
   end
@@ -25,7 +23,7 @@ Studygroup::Application.routes.draw do
   resources :messages, only: [:new,:create]
 
   resources :learnings, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    get 'mylearning'
+    get 'mylearning', on: :collection
     resources :votes, only: [:create, :destroy]
   end
 

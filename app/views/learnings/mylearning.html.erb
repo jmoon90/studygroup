@@ -1,9 +1,8 @@
 <% provide(:title, "My Learnings") %>
-
 <div class="row">
   <div class='12-small columns'>
-    <h1><%= current_user.email %> Group</h1>
-    <%= gravatar_for current_user%>
+    <h1><%= @user.email %> Group</h1>
+    <%= gravatar_for @user.email %>
   </div>
 </div>
 
