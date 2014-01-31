@@ -7,7 +7,6 @@ class VotesController < ApplicationController
 
 
     if @vote.save
-      binding.pry
       Learning.rank_learning(learning)
       redirect_to learnings_path
     else
