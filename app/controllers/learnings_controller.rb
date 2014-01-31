@@ -50,7 +50,7 @@ class LearningsController < ApplicationController
 
   def mylearning
     @user = current_user
-    @learnings = Learning.where(user_id: current_user).order(created_at: :desc)
+    @learnings = Learning.where(user_id: @user).order(created_at: :desc)
   end
 
   private

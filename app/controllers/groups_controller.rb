@@ -32,8 +32,8 @@ class GroupsController < ApplicationController
   end
 
   def mygroup
-    @memberships = Membership.where(user_id: current_user.id)
     @user = current_user
+    @memberships = Membership.where(user_id: @user)
   end
 
   private
