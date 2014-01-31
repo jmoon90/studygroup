@@ -23,7 +23,8 @@ class Learning < ActiveRecord::Base
     send(object)
   end
 
-  def self.rank_learning(learning, like)
+  def self.rank_learning(learning)
+    like = learning.votes_count
     created_at = (learning.created_at.strftime "%H").to_f
     like = 1 if like < 2
     rank = (like-1) / ((created_at + 2) **1.5)
