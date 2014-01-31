@@ -3,16 +3,16 @@
 <div class="row">
   <div class='12-small columns'>
     <h1><%= @user.email %> Group</h1>
-    <%= gravatar_for @user.email%>
+    <%= gravatar_for @user.email %>
   </div>
 </div>
 
 <div class="row">
   <div class='12-small columns'>
-  <ul class="small-block-grid-3">
-    <% @memberships.each do |membership| %>
-      <li><%= link_to membership.group.name, group_path(membership.group_id), class:"margin_top" %></li>
-    <% end %>
-  </ul>
+    <ul class="small-block-grid-3">
+      <% @memberships.each do |membership| %>
+        <li><%= link_to membership.group.name, group_path(membership.group_id), class:"margin_top" %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
