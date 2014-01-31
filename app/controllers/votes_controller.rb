@@ -1,11 +1,13 @@
 class VotesController < ApplicationController
   def create
     learning = Learning.find(params[:learning_id])
+
     @vote = current_user.votes.build()
     @vote.learning = learning
 
 
     if @vote.save
+      binding.pry
       Learning.rank_learning(learning)
       redirect_to learnings_path
     else
@@ -17,7 +19,7 @@ class VotesController < ApplicationController
     learning = Learning.find(params[:learning_id])
     Learning.rank_learning(learning)
 
-    current_user.votes.destroy(params[:id])
+    current_user.votes.delete(params[:id])
     redirect_to learnings_path
   end
 end
