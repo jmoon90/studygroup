@@ -10,7 +10,7 @@ class VotesController < ApplicationController
       Learning.rank_learning(learning)
       redirect_to learnings_path
     else
-      redirect_to learnings_path
+      render learnings_path
     end
   end
 
