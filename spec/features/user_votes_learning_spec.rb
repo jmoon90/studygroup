@@ -29,7 +29,7 @@ feature 'user votes' do
     scenario 'who voted on a learning' do
       click_on 'like'
 
-      expect(page).to have_content('We heard the swaying of your heart')
+      expect(page).to have_content('We heard your hearts vote')
       expect(page).to have_button('unlike')
     end
 
@@ -38,6 +38,7 @@ feature 'user votes' do
       click_on 'unlike'
 
       expect(page).to have_button('like')
+      expect(page).to have_content('We heard the swaying of your heart')
     end
   end
 end
