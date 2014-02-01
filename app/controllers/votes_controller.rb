@@ -1,20 +1,21 @@
 class VotesController < ApplicationController
   def create
     learning = Learning.find(params[:learning_id])
-    @vote = current_user.votes.build()
-    @vote.learning = learning
+    @vote = Vote.find_or_create_by(user_id: current_user.id, learning_id: learning.id)
 
     if @vote.save
       flash[:notice] = "We heard the swaying of your heart"
-    #  Learning.rank_learning(learning)
+      Learning.rank_learning(learning)
+      redirect_to learnings_path
+    else
       redirect_to learnings_path
     end
   end
 
   def destroy
-    #learning = Learning.find(params[:learning_id])
-    #Learning.rank_learning(learning)
-    current_user.votes.delete(params[:id])
+    @learning = Learning.find(params[:learning_id])
+    Learning.rank_learning(@learning)
+    Vote.destroy(@learning.vote_from(current_user))
     redirect_to learnings_path
   end
 end

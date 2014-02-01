@@ -12,14 +12,8 @@ class MembershipsController < ApplicationController
 
   def destroy
     @membership = Membership.where(group_id: params[:group_id],
-                                   user_id: params[:id])[0]
-    Membership.delete(@membership.id)
-    redirect_to group_path(@membership.group), notice: 'Sorry to see you leave'
-  end
-
-  private
-
-  def membership_params
-    params.require(:membership).permit(:group_id, :user_id)
+                                   user_id: current_user.id)
+    Membership.destroy(@membership)
+    redirect_to group_path(params[:group_id]), notice: 'Sorry to see you leave'
   end
 end
