@@ -7,10 +7,9 @@ class VotesController < ApplicationController
 
 
     if @vote.save
+      flash[:notice] = "We heard the swaying of your heart"
       Learning.rank_learning(learning)
       redirect_to learnings_path
-    else
-      render learnings_path
     end
   end
 
