@@ -14,7 +14,9 @@ class VotesController < ApplicationController
   def destroy
     @learning = Learning.find(params[:learning_id])
     Learning.rank_learning(@learning)
-    Vote.destroy(@learning.vote_from(current_user))
+    @vote = Vote.find(params[:id])
+    @vote.destroy
+
     redirect_to learnings_path, notice: "We heard the swaying of your heart"
   end
 end
