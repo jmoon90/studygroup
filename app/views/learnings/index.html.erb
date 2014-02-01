@@ -33,7 +33,7 @@
               <%= button_to "#{learning.votes_count} like", learning_votes_path(learning), class:"button tiny primary" %>
             <% end %>
           <% else %>
-          <%= link_to "#{learning.votes_count} like","#", "data-reveal-id" => 'myModal', class:"button tiny primary" %>
+            <%= link_to "#{learning.votes_count} like","#", "data-reveal-id" => 'myModal', class:"button tiny primary" %>
           <% end %>
         </li>
       </div>
