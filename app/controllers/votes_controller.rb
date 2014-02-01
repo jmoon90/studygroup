@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   def create
     learning = Learning.find(params[:learning_id])
-    @vote = Vote.find_or_create_by(user_id: current_user.id, learning_id: learning.id)
+    @vote = learning.votes.build(user_id: current_user.id)
 
     if @vote.save
       Learning.rank_learning(learning)
