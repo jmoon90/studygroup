@@ -5,7 +5,7 @@ class VotesController < ApplicationController
 
     if @vote.save
       Learning.rank_learning(learning)
-      redirect_to groups_path, notice: "We heard your hearts vote"
+      redirect_to learnings_path, notice: "We heard your hearts vote"
     else
       redirect_to learnings_path
     end
