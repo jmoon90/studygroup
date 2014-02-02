@@ -5,7 +5,7 @@ class VotesController < ApplicationController
     Learning.rank_learning(learning)
 
     if @vote.save
-      redirect_to groups_path, notice: "We heard your hearts vote"
+      redirect_to learnings_path, notice: "We heard your hearts vote"
     else
       redirect_to learnings_path
     end
@@ -17,6 +17,6 @@ class VotesController < ApplicationController
 
     @vote = Vote.find(params[:id])
     Vote.destroy(@vote)
-    redirect_to groups_path, notice: "We heard the swaying of your heart"
+    redirect_to learnings_path, notice: "We heard the swaying of your heart"
   end
 end
