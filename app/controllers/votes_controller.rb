@@ -12,8 +12,8 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @learning = Learning.find(params[:learning_id])
-    Learning.rank_learning(@learning)
+    #@learning = Learning.find(params[:learning_id])
+    #Learning.rank_learning(@learning)
 
     @vote = Vote.find(params[:id])
     Vote.destroy(@vote)
