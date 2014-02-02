@@ -12,6 +12,7 @@ class VotesController < ApplicationController
   def destroy
     @vote = Vote.find(params[:id])
     Vote.destroy(@vote)
-    redirect_to groups_path, notice: "We heard the swaying of your heart"
+
+    redirect_to learnings_path, notice: "We heard the swaying of your heart"
   end
 end
