@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
     if @post.update(post_params)
       flash[:notice] = "Successfully edited post"
-      redirect_to group_path(@post.group)
+      redirect_to posts_path(params[:id])
     else
       flash[:notice] = "There was an error. Please try again."
       render :edit
